@@ -39,7 +39,7 @@ void initPorts(void)
 	
 	LATC = 0b00000000;			// Clear Port C latches before configuring PORTC
 	ANSELC = 0b00000000;		// Make all Port C pins digital
-	TRISC = 0b00000111;			// Set LED outputs, IR demodulator input
+	TRISC = 0b00000000;			// Set LED outputs, IR demodulator input
 
 	// Enable interrupts, if needed.
 }

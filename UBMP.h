@@ -1,5 +1,5 @@
 /*/==============================================================================
-	UBMP 1.0 (PIC16F1459) symbolic constant definitions.
+    UBMP 1.0 (PIC16F1459) symbolic constant definitions.
 ==============================================================================*/
 
 // TODO - Add user constant definitions for UBMP hardware here.
@@ -28,25 +28,25 @@
 // PORTC I/O device definitions
 
 #define	H1in		RC0			// External I/O header H1 input
-#define	NEOPIXEL1	LATC0		// External I/O header H1 output
+#define	NPIXEL1     LATC0		// External I/O header H1 output
 #define H2			RC1			// External I/O header H2 input
-#define	NEOPIXEL2	LATC1		// Servo2 output (header H2)
+#define	NPIXEL2     LATC1		// Servo2 output (header H2)
 #define	IR			RC1			// IR demodulator U2 input
 #define	U2			RC1			// IR demodulator U2 input
 #define	H3			RC2			// External I/O header H3 input
-#define	NEOPIXEL3	LATC2		// Servo 3 output (header H3)
+#define	NPIXEL3     LATC2		// Servo 3 output (header H3)
 #define	H4			RC3			// External I/O header H4 input
 #define	LED2		LATC3		// IR LED (LED2) output
-#define	NEOPIXEL4	LATC3		// Servo 4 output (header H4)
+#define	NPIXEL4     LATC3		// Servo 4 output (header H4)
 #define	H5			RC4			// External I/O header H5 input
 #define	LED3		LATC4		// LED3 output
-#define	NEOPIXEL5	LATC4		// Servo 5 output (header H5)
+#define	NPIXEL5     LATC4		// Servo 5 output (header H5)
 #define	H6			RC5			// External I/O header H6 input
 #define	LED4		LATC5		// LED4 output
-#define	NEOPIXEL6	LATC5		// Servo 6 output (header H6)
+#define	NPIXEL6     LATC5		// Servo 6 output (header H6)
 #define	H7			RC6			// External I/O header H7 input
 #define	LED5		LATC6		// LED5 output
-#define	NEOPIXEL7	LATC6		// Servo 7 output (header H7)
+#define	NPIXEL7     LATC6		// Servo 7 output (header H7)
 #define	H8			RC7			// External I/O header H8 input
 #define	LED6		LATC7		// LED6 output
 #define	SERVO		LATC7		// Servo 8 output (header H8)
@@ -81,6 +81,6 @@
 
 // TODO - Add function prototypes for all functions in UBMP.c here.
 
-void initOsc(void);				// Oscillator initialization function prototype.
-void initPorts(void);			// Port initialization function prototype.
-void initANB(void);				// Analogue PORTB initialization function
+void initOsc(void); // Oscillator initialization function prototype.
+void initPorts(void); // Port initialization function prototype.
+void initANB(void); // Analogue PORTB initialization function
