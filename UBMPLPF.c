@@ -361,18 +361,19 @@ void NeoPixel6(unsigned char height, unsigned char leds) {
 ==============================================================================*/
 void NeoPixel7(unsigned char height, unsigned char leds) {
     for (leds; leds != 0; leds--) {
-        temp = (leds < height) ? green : 0;
+        temp = 0b10101010;
         for (i = 8; i != 0; i--) {
             asm("bsf LATC,6");
-            asm("nop");
-            asm("nop");
+            asm("nop"); // extend 0 pulse
             asm("btfss _temp,7");
-            asm("bcf LATC,6");
+            asm("bcf LATC,6"); // 0 pulse ends here
+            asm("nop");
+            asm("nop");
             asm("nop");
             asm("nop");
             asm("nop");
             asm("lslf _temp,f");
-            asm("bcf LATC,6");
+            asm("bcf LATC,6"); // 1 end puls here
         }
         temp = red; //(leds < height) ? red : 0;
         for (i = 8; i != 0; i--) {
@@ -452,7 +453,7 @@ int main(void) {
             }
         }
         LPFAvg = (max1 + max2 + max3 + max4) / 4;
-        lights(LPFLookupTable[LPFAvg], maxLEDs);
+        lights(0b10101010, maxLEDs);
         __delay_ms(25);
         if (S1 == 0) // Enter the bootloader if S1 is pressed.
         {

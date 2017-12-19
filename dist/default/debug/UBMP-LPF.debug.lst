@@ -1,0 +1,3450 @@
+
+
+Microchip Technology PIC LITE Macro Assembler V1.44 build -154322312 
+                                                                                               Tue Dec 19 10:34:49 2017
+
+Microchip Technology Omniscient Code Generator v1.44 (Free mode) build 201709140600
+     1                           	processor	16F1459
+     2                           	opt	pw 120
+     3                           	opt	lm
+     4                           	psect	idataBANK0,global,class=CODE,delta=2
+     5                           	psect	stringtext1,global,class=STRCODE,delta=2
+     6                           	psect	stringtext2,global,class=STRCODE,delta=2
+     7                           	psect	cinit,global,class=CODE,merge=1,delta=2
+     8                           	psect	bssCOMMON,global,class=COMMON,space=1,delta=1
+     9                           	psect	bssBANK0,global,class=BANK0,space=1,delta=1
+    10                           	psect	dataBANK0,global,class=BANK0,space=1,delta=1
+    11                           	psect	inittext,global,class=CODE,delta=2
+    12                           	psect	cstackCOMMON,global,class=COMMON,space=1,delta=1
+    13                           	psect	cstackBANK0,global,class=BANK0,space=1,delta=1
+    14                           	psect	maintext,global,class=CODE,merge=1,split=1,delta=2
+    15                           	psect	text1,local,class=CODE,merge=1,delta=2
+    16                           	psect	text2,local,class=CODE,merge=1,delta=2
+    17                           	psect	text3,local,class=CODE,merge=1,delta=2
+    18                           	psect	text4,local,class=CODE,merge=1,delta=2
+    19                           	psect	text5,local,class=CODE,merge=1,delta=2
+    20                           	psect	text6,local,class=CODE,merge=1,delta=2
+    21                           	psect	text7,local,class=CODE,merge=1,delta=2
+    22                           	psect	text8,local,class=CODE,merge=1,delta=2
+    23                           	psect	text9,local,class=CODE,merge=1,delta=2
+    24                           	psect	text10,local,class=CODE,merge=1,delta=2
+    25                           	psect	text11,local,class=CODE,merge=1,delta=2
+    26                           	psect	text12,local,class=CODE,merge=1,delta=2,group=1
+    27                           	dabs	1,0x7E,2
+    28  0000                     
+    29                           ; Version 1.44
+    30                           ; Generated 14/09/2017 GMT
+    31                           ; 
+    32                           ; Copyright © 2017, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    33                           ; All rights reserved.
+    34                           ; 
+    35                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+      +                          ip").
+    36                           ; 
+    37                           ; Redistribution and use in source and binary forms, with or without modification, are
+    38                           ; permitted provided that the following conditions are met:
+    39                           ; 
+    40                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+      +                          t of
+    41                           ;        conditions and the following disclaimer.
+    42                           ; 
+    43                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+      +                          list
+    44                           ;        of conditions and the following disclaimer in the documentation and/or other
+    45                           ;        materials provided with the distribution.
+    46                           ; 
+    47                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+      +                          is
+    48                           ;        software without specific prior written permission.
+    49                           ; 
+    50                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    51                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+      +                          OR
+    52                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+      +                          T,
+    53                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    54                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    55                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+      +                          RICT
+    56                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+      +                          SE OF
+    57                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    58                           ; 
+    59                           ; 
+    60                           ; Code-generator required, PIC16F1459 Definitions
+    61                           ; 
+    62                           ; SFR Addresses
+    63  0000                     	;# 
+    64  0001                     	;# 
+    65  0002                     	;# 
+    66  0003                     	;# 
+    67  0004                     	;# 
+    68  0005                     	;# 
+    69  0006                     	;# 
+    70  0007                     	;# 
+    71  0008                     	;# 
+    72  0009                     	;# 
+    73  000A                     	;# 
+    74  000B                     	;# 
+    75  000C                     	;# 
+    76  000D                     	;# 
+    77  000E                     	;# 
+    78  0011                     	;# 
+    79  0012                     	;# 
+    80  0015                     	;# 
+    81  0016                     	;# 
+    82  0016                     	;# 
+    83  0017                     	;# 
+    84  0018                     	;# 
+    85  0019                     	;# 
+    86  001A                     	;# 
+    87  001B                     	;# 
+    88  001C                     	;# 
+    89  008C                     	;# 
+    90  008D                     	;# 
+    91  008E                     	;# 
+    92  0091                     	;# 
+    93  0092                     	;# 
+    94  0095                     	;# 
+    95  0096                     	;# 
+    96  0097                     	;# 
+    97  0098                     	;# 
+    98  0099                     	;# 
+    99  009A                     	;# 
+   100  009B                     	;# 
+   101  009B                     	;# 
+   102  009C                     	;# 
+   103  009D                     	;# 
+   104  009E                     	;# 
+   105  009F                     	;# 
+   106  010C                     	;# 
+   107  010D                     	;# 
+   108  010E                     	;# 
+   109  0111                     	;# 
+   110  0112                     	;# 
+   111  0113                     	;# 
+   112  0114                     	;# 
+   113  0115                     	;# 
+   114  0116                     	;# 
+   115  0117                     	;# 
+   116  0118                     	;# 
+   117  0119                     	;# 
+   118  011D                     	;# 
+   119  018C                     	;# 
+   120  018D                     	;# 
+   121  018E                     	;# 
+   122  0191                     	;# 
+   123  0191                     	;# 
+   124  0192                     	;# 
+   125  0193                     	;# 
+   126  0193                     	;# 
+   127  0194                     	;# 
+   128  0195                     	;# 
+   129  0196                     	;# 
+   130  0197                     	;# 
+   131  0199                     	;# 
+   132  019A                     	;# 
+   133  019B                     	;# 
+   134  019B                     	;# 
+   135  019C                     	;# 
+   136  019D                     	;# 
+   137  019E                     	;# 
+   138  019F                     	;# 
+   139  020C                     	;# 
+   140  020D                     	;# 
+   141  0211                     	;# 
+   142  0211                     	;# 
+   143  0212                     	;# 
+   144  0212                     	;# 
+   145  0213                     	;# 
+   146  0213                     	;# 
+   147  0214                     	;# 
+   148  0214                     	;# 
+   149  0215                     	;# 
+   150  0215                     	;# 
+   151  0215                     	;# 
+   152  0216                     	;# 
+   153  0216                     	;# 
+   154  0217                     	;# 
+   155  0217                     	;# 
+   156  0391                     	;# 
+   157  0392                     	;# 
+   158  0393                     	;# 
+   159  0394                     	;# 
+   160  0395                     	;# 
+   161  0396                     	;# 
+   162  039A                     	;# 
+   163  039B                     	;# 
+   164  0611                     	;# 
+   165  0612                     	;# 
+   166  0613                     	;# 
+   167  0613                     	;# 
+   168  0614                     	;# 
+   169  0615                     	;# 
+   170  0616                     	;# 
+   171  0616                     	;# 
+   172  0691                     	;# 
+   173  0692                     	;# 
+   174  0693                     	;# 
+   175  0694                     	;# 
+   176  0695                     	;# 
+   177  0E8E                     	;# 
+   178  0E8F                     	;# 
+   179  0E90                     	;# 
+   180  0E91                     	;# 
+   181  0E92                     	;# 
+   182  0E93                     	;# 
+   183  0E94                     	;# 
+   184  0E94                     	;# 
+   185  0E95                     	;# 
+   186  0E96                     	;# 
+   187  0E97                     	;# 
+   188  0E98                     	;# 
+   189  0E99                     	;# 
+   190  0E9A                     	;# 
+   191  0E9B                     	;# 
+   192  0E9C                     	;# 
+   193  0E9D                     	;# 
+   194  0E9E                     	;# 
+   195  0E9F                     	;# 
+   196  0FE4                     	;# 
+   197  0FE5                     	;# 
+   198  0FE6                     	;# 
+   199  0FE7                     	;# 
+   200  0FE8                     	;# 
+   201  0FE9                     	;# 
+   202  0FEA                     	;# 
+   203  0FEB                     	;# 
+   204  0FED                     	;# 
+   205  0FEE                     	;# 
+   206  0FEF                     	;# 
+   207  0000                     	;# 
+   208  0001                     	;# 
+   209  0002                     	;# 
+   210  0003                     	;# 
+   211  0004                     	;# 
+   212  0005                     	;# 
+   213  0006                     	;# 
+   214  0007                     	;# 
+   215  0008                     	;# 
+   216  0009                     	;# 
+   217  000A                     	;# 
+   218  000B                     	;# 
+   219  000C                     	;# 
+   220  000D                     	;# 
+   221  000E                     	;# 
+   222  0011                     	;# 
+   223  0012                     	;# 
+   224  0015                     	;# 
+   225  0016                     	;# 
+   226  0016                     	;# 
+   227  0017                     	;# 
+   228  0018                     	;# 
+   229  0019                     	;# 
+   230  001A                     	;# 
+   231  001B                     	;# 
+   232  001C                     	;# 
+   233  008C                     	;# 
+   234  008D                     	;# 
+   235  008E                     	;# 
+   236  0091                     	;# 
+   237  0092                     	;# 
+   238  0095                     	;# 
+   239  0096                     	;# 
+   240  0097                     	;# 
+   241  0098                     	;# 
+   242  0099                     	;# 
+   243  009A                     	;# 
+   244  009B                     	;# 
+   245  009B                     	;# 
+   246  009C                     	;# 
+   247  009D                     	;# 
+   248  009E                     	;# 
+   249  009F                     	;# 
+   250  010C                     	;# 
+   251  010D                     	;# 
+   252  010E                     	;# 
+   253  0111                     	;# 
+   254  0112                     	;# 
+   255  0113                     	;# 
+   256  0114                     	;# 
+   257  0115                     	;# 
+   258  0116                     	;# 
+   259  0117                     	;# 
+   260  0118                     	;# 
+   261  0119                     	;# 
+   262  011D                     	;# 
+   263  018C                     	;# 
+   264  018D                     	;# 
+   265  018E                     	;# 
+   266  0191                     	;# 
+   267  0191                     	;# 
+   268  0192                     	;# 
+   269  0193                     	;# 
+   270  0193                     	;# 
+   271  0194                     	;# 
+   272  0195                     	;# 
+   273  0196                     	;# 
+   274  0197                     	;# 
+   275  0199                     	;# 
+   276  019A                     	;# 
+   277  019B                     	;# 
+   278  019B                     	;# 
+   279  019C                     	;# 
+   280  019D                     	;# 
+   281  019E                     	;# 
+   282  019F                     	;# 
+   283  020C                     	;# 
+   284  020D                     	;# 
+   285  0211                     	;# 
+   286  0211                     	;# 
+   287  0212                     	;# 
+   288  0212                     	;# 
+   289  0213                     	;# 
+   290  0213                     	;# 
+   291  0214                     	;# 
+   292  0214                     	;# 
+   293  0215                     	;# 
+   294  0215                     	;# 
+   295  0215                     	;# 
+   296  0216                     	;# 
+   297  0216                     	;# 
+   298  0217                     	;# 
+   299  0217                     	;# 
+   300  0391                     	;# 
+   301  0392                     	;# 
+   302  0393                     	;# 
+   303  0394                     	;# 
+   304  0395                     	;# 
+   305  0396                     	;# 
+   306  039A                     	;# 
+   307  039B                     	;# 
+   308  0611                     	;# 
+   309  0612                     	;# 
+   310  0613                     	;# 
+   311  0613                     	;# 
+   312  0614                     	;# 
+   313  0615                     	;# 
+   314  0616                     	;# 
+   315  0616                     	;# 
+   316  0691                     	;# 
+   317  0692                     	;# 
+   318  0693                     	;# 
+   319  0694                     	;# 
+   320  0695                     	;# 
+   321  0E8E                     	;# 
+   322  0E8F                     	;# 
+   323  0E90                     	;# 
+   324  0E91                     	;# 
+   325  0E92                     	;# 
+   326  0E93                     	;# 
+   327  0E94                     	;# 
+   328  0E94                     	;# 
+   329  0E95                     	;# 
+   330  0E96                     	;# 
+   331  0E97                     	;# 
+   332  0E98                     	;# 
+   333  0E99                     	;# 
+   334  0E9A                     	;# 
+   335  0E9B                     	;# 
+   336  0E9C                     	;# 
+   337  0E9D                     	;# 
+   338  0E9E                     	;# 
+   339  0E9F                     	;# 
+   340  0FE4                     	;# 
+   341  0FE5                     	;# 
+   342  0FE6                     	;# 
+   343  0FE7                     	;# 
+   344  0FE8                     	;# 
+   345  0FE9                     	;# 
+   346  0FEA                     	;# 
+   347  0FEB                     	;# 
+   348  0FED                     	;# 
+   349  0FEE                     	;# 
+   350  0FEF                     	;# 
+   351  0000                     	;# 
+   352  0001                     	;# 
+   353  0002                     	;# 
+   354  0003                     	;# 
+   355  0004                     	;# 
+   356  0005                     	;# 
+   357  0006                     	;# 
+   358  0007                     	;# 
+   359  0008                     	;# 
+   360  0009                     	;# 
+   361  000A                     	;# 
+   362  000B                     	;# 
+   363  000C                     	;# 
+   364  000D                     	;# 
+   365  000E                     	;# 
+   366  0011                     	;# 
+   367  0012                     	;# 
+   368  0015                     	;# 
+   369  0016                     	;# 
+   370  0016                     	;# 
+   371  0017                     	;# 
+   372  0018                     	;# 
+   373  0019                     	;# 
+   374  001A                     	;# 
+   375  001B                     	;# 
+   376  001C                     	;# 
+   377  008C                     	;# 
+   378  008D                     	;# 
+   379  008E                     	;# 
+   380  0091                     	;# 
+   381  0092                     	;# 
+   382  0095                     	;# 
+   383  0096                     	;# 
+   384  0097                     	;# 
+   385  0098                     	;# 
+   386  0099                     	;# 
+   387  009A                     	;# 
+   388  009B                     	;# 
+   389  009B                     	;# 
+   390  009C                     	;# 
+   391  009D                     	;# 
+   392  009E                     	;# 
+   393  009F                     	;# 
+   394  010C                     	;# 
+   395  010D                     	;# 
+   396  010E                     	;# 
+   397  0111                     	;# 
+   398  0112                     	;# 
+   399  0113                     	;# 
+   400  0114                     	;# 
+   401  0115                     	;# 
+   402  0116                     	;# 
+   403  0117                     	;# 
+   404  0118                     	;# 
+   405  0119                     	;# 
+   406  011D                     	;# 
+   407  018C                     	;# 
+   408  018D                     	;# 
+   409  018E                     	;# 
+   410  0191                     	;# 
+   411  0191                     	;# 
+   412  0192                     	;# 
+   413  0193                     	;# 
+   414  0193                     	;# 
+   415  0194                     	;# 
+   416  0195                     	;# 
+   417  0196                     	;# 
+   418  0197                     	;# 
+   419  0199                     	;# 
+   420  019A                     	;# 
+   421  019B                     	;# 
+   422  019B                     	;# 
+   423  019C                     	;# 
+   424  019D                     	;# 
+   425  019E                     	;# 
+   426  019F                     	;# 
+   427  020C                     	;# 
+   428  020D                     	;# 
+   429  0211                     	;# 
+   430  0211                     	;# 
+   431  0212                     	;# 
+   432  0212                     	;# 
+   433  0213                     	;# 
+   434  0213                     	;# 
+   435  0214                     	;# 
+   436  0214                     	;# 
+   437  0215                     	;# 
+   438  0215                     	;# 
+   439  0215                     	;# 
+   440  0216                     	;# 
+   441  0216                     	;# 
+   442  0217                     	;# 
+   443  0217                     	;# 
+   444  0391                     	;# 
+   445  0392                     	;# 
+   446  0393                     	;# 
+   447  0394                     	;# 
+   448  0395                     	;# 
+   449  0396                     	;# 
+   450  039A                     	;# 
+   451  039B                     	;# 
+   452  0611                     	;# 
+   453  0612                     	;# 
+   454  0613                     	;# 
+   455  0613                     	;# 
+   456  0614                     	;# 
+   457  0615                     	;# 
+   458  0616                     	;# 
+   459  0616                     	;# 
+   460  0691                     	;# 
+   461  0692                     	;# 
+   462  0693                     	;# 
+   463  0694                     	;# 
+   464  0695                     	;# 
+   465  0E8E                     	;# 
+   466  0E8F                     	;# 
+   467  0E90                     	;# 
+   468  0E91                     	;# 
+   469  0E92                     	;# 
+   470  0E93                     	;# 
+   471  0E94                     	;# 
+   472  0E94                     	;# 
+   473  0E95                     	;# 
+   474  0E96                     	;# 
+   475  0E97                     	;# 
+   476  0E98                     	;# 
+   477  0E99                     	;# 
+   478  0E9A                     	;# 
+   479  0E9B                     	;# 
+   480  0E9C                     	;# 
+   481  0E9D                     	;# 
+   482  0E9E                     	;# 
+   483  0E9F                     	;# 
+   484  0FE4                     	;# 
+   485  0FE5                     	;# 
+   486  0FE6                     	;# 
+   487  0FE7                     	;# 
+   488  0FE8                     	;# 
+   489  0FE9                     	;# 
+   490  0FEA                     	;# 
+   491  0FEB                     	;# 
+   492  0FED                     	;# 
+   493  0FEE                     	;# 
+   494  0FEF                     	;# 
+   495                           
+   496                           	psect	idataBANK0
+   497  1778                     __pidataBANK0:	
+   498                           
+   499                           ;initializer for _LPFInput
+   500  1778  347F               	retlw	127
+   501  1779  347F               	retlw	127
+   502  177A  347F               	retlw	127
+   503  177B  347F               	retlw	127
+   504  177C  347F               	retlw	127
+   505  177D  347F               	retlw	127
+   506  177E  347F               	retlw	127
+   507  177F  347F               	retlw	127
+   508  1780  347F               	retlw	127
+   509  1781  347F               	retlw	127
+   510                           
+   511                           ;initializer for _green
+   512  1782  3440               	retlw	64
+   513                           
+   514                           	psect	stringtext1
+   515  1000                     __pstringtext1:	
+   516  1000                     _LPFLookupTable:	
+   517  1000  3400               	retlw	0
+   518  1001  3400               	retlw	0
+   519  1002  3400               	retlw	0
+   520  1003  3400               	retlw	0
+   521  1004  3400               	retlw	0
+   522  1005  3400               	retlw	0
+   523  1006  3400               	retlw	0
+   524  1007  3400               	retlw	0
+   525  1008  3400               	retlw	0
+   526  1009  3400               	retlw	0
+   527  100A  3400               	retlw	0
+   528  100B  3400               	retlw	0
+   529  100C  3400               	retlw	0
+   530  100D  3400               	retlw	0
+   531  100E  3400               	retlw	0
+   532  100F  3400               	retlw	0
+   533  1010  3400               	retlw	0
+   534  1011  3400               	retlw	0
+   535  1012  3400               	retlw	0
+   536  1013  3400               	retlw	0
+   537  1014  3400               	retlw	0
+   538  1015  3400               	retlw	0
+   539  1016  3400               	retlw	0
+   540  1017  3400               	retlw	0
+   541  1018  3400               	retlw	0
+   542  1019  3400               	retlw	0
+   543  101A  3400               	retlw	0
+   544  101B  3400               	retlw	0
+   545  101C  3400               	retlw	0
+   546  101D  3400               	retlw	0
+   547  101E  3400               	retlw	0
+   548  101F  3400               	retlw	0
+   549  1020  3400               	retlw	0
+   550  1021  3400               	retlw	0
+   551  1022  3400               	retlw	0
+   552  1023  3400               	retlw	0
+   553  1024  3400               	retlw	0
+   554  1025  3400               	retlw	0
+   555  1026  3400               	retlw	0
+   556  1027  3400               	retlw	0
+   557  1028  3400               	retlw	0
+   558  1029  3400               	retlw	0
+   559  102A  3400               	retlw	0
+   560  102B  3400               	retlw	0
+   561  102C  3400               	retlw	0
+   562  102D  3400               	retlw	0
+   563  102E  3400               	retlw	0
+   564  102F  3400               	retlw	0
+   565  1030  3400               	retlw	0
+   566  1031  3400               	retlw	0
+   567  1032  3400               	retlw	0
+   568  1033  3400               	retlw	0
+   569  1034  3400               	retlw	0
+   570  1035  3400               	retlw	0
+   571  1036  3400               	retlw	0
+   572  1037  3400               	retlw	0
+   573  1038  3400               	retlw	0
+   574  1039  3400               	retlw	0
+   575  103A  3400               	retlw	0
+   576  103B  3400               	retlw	0
+   577  103C  3400               	retlw	0
+   578  103D  3400               	retlw	0
+   579  103E  3400               	retlw	0
+   580  103F  3400               	retlw	0
+   581  1040  3400               	retlw	0
+   582  1041  3400               	retlw	0
+   583  1042  3400               	retlw	0
+   584  1043  3400               	retlw	0
+   585  1044  3400               	retlw	0
+   586  1045  3400               	retlw	0
+   587  1046  3400               	retlw	0
+   588  1047  3400               	retlw	0
+   589  1048  3400               	retlw	0
+   590  1049  3400               	retlw	0
+   591  104A  3400               	retlw	0
+   592  104B  3400               	retlw	0
+   593  104C  3400               	retlw	0
+   594  104D  3400               	retlw	0
+   595  104E  3400               	retlw	0
+   596  104F  3400               	retlw	0
+   597  1050  3400               	retlw	0
+   598  1051  3400               	retlw	0
+   599  1052  3400               	retlw	0
+   600  1053  3400               	retlw	0
+   601  1054  3400               	retlw	0
+   602  1055  3400               	retlw	0
+   603  1056  3400               	retlw	0
+   604  1057  3400               	retlw	0
+   605  1058  3401               	retlw	1
+   606  1059  3401               	retlw	1
+   607  105A  3401               	retlw	1
+   608  105B  3402               	retlw	2
+   609  105C  3402               	retlw	2
+   610  105D  3402               	retlw	2
+   611  105E  3402               	retlw	2
+   612  105F  3403               	retlw	3
+   613  1060  3403               	retlw	3
+   614  1061  3403               	retlw	3
+   615  1062  3404               	retlw	4
+   616  1063  3404               	retlw	4
+   617  1064  3404               	retlw	4
+   618  1065  3404               	retlw	4
+   619  1066  3405               	retlw	5
+   620  1067  3405               	retlw	5
+   621  1068  3405               	retlw	5
+   622  1069  3406               	retlw	6
+   623  106A  3406               	retlw	6
+   624  106B  3406               	retlw	6
+   625  106C  3406               	retlw	6
+   626  106D  3407               	retlw	7
+   627  106E  3407               	retlw	7
+   628  106F  3407               	retlw	7
+   629  1070  3408               	retlw	8
+   630  1071  3408               	retlw	8
+   631  1072  3408               	retlw	8
+   632  1073  3408               	retlw	8
+   633  1074  3409               	retlw	9
+   634  1075  3409               	retlw	9
+   635  1076  3409               	retlw	9
+   636  1077  340A               	retlw	10
+   637  1078  340A               	retlw	10
+   638  1079  340A               	retlw	10
+   639  107A  340A               	retlw	10
+   640  107B  340B               	retlw	11
+   641  107C  340B               	retlw	11
+   642  107D  340B               	retlw	11
+   643  107E  340C               	retlw	12
+   644  107F  340C               	retlw	12
+   645  1080  340C               	retlw	12
+   646  1081  340C               	retlw	12
+   647  1082  340D               	retlw	13
+   648  1083  340D               	retlw	13
+   649  1084  340D               	retlw	13
+   650  1085  340E               	retlw	14
+   651  1086  340E               	retlw	14
+   652  1087  340E               	retlw	14
+   653  1088  340E               	retlw	14
+   654  1089  340F               	retlw	15
+   655  108A  340F               	retlw	15
+   656  108B  340F               	retlw	15
+   657  108C  3410               	retlw	16
+   658  108D  3410               	retlw	16
+   659  108E  3410               	retlw	16
+   660  108F  3410               	retlw	16
+   661  1090  3411               	retlw	17
+   662  1091  3411               	retlw	17
+   663  1092  3411               	retlw	17
+   664  1093  3412               	retlw	18
+   665  1094  3412               	retlw	18
+   666  1095  3412               	retlw	18
+   667  1096  3412               	retlw	18
+   668  1097  3413               	retlw	19
+   669  1098  3413               	retlw	19
+   670  1099  3413               	retlw	19
+   671  109A  3414               	retlw	20
+   672  109B  3414               	retlw	20
+   673  109C  3414               	retlw	20
+   674  109D  3414               	retlw	20
+   675  109E  3415               	retlw	21
+   676  109F  3415               	retlw	21
+   677  10A0  3415               	retlw	21
+   678  10A1  3416               	retlw	22
+   679  10A2  3416               	retlw	22
+   680  10A3  3416               	retlw	22
+   681  10A4  3416               	retlw	22
+   682  10A5  3417               	retlw	23
+   683  10A6  3417               	retlw	23
+   684  10A7  3417               	retlw	23
+   685  10A8  3418               	retlw	24
+   686  10A9  3418               	retlw	24
+   687  10AA  3418               	retlw	24
+   688  10AB  3418               	retlw	24
+   689  10AC  3419               	retlw	25
+   690  10AD  3419               	retlw	25
+   691  10AE  3419               	retlw	25
+   692  10AF  341A               	retlw	26
+   693  10B0  341A               	retlw	26
+   694  10B1  341A               	retlw	26
+   695  10B2  341A               	retlw	26
+   696  10B3  341B               	retlw	27
+   697  10B4  341B               	retlw	27
+   698  10B5  341B               	retlw	27
+   699  10B6  341C               	retlw	28
+   700  10B7  341C               	retlw	28
+   701  10B8  341C               	retlw	28
+   702  10B9  341C               	retlw	28
+   703  10BA  341D               	retlw	29
+   704  10BB  341D               	retlw	29
+   705  10BC  341D               	retlw	29
+   706  10BD  341E               	retlw	30
+   707  10BE  341E               	retlw	30
+   708  10BF  341E               	retlw	30
+   709  10C0  341E               	retlw	30
+   710  10C1  341E               	retlw	30
+   711  10C2  341E               	retlw	30
+   712  10C3  341E               	retlw	30
+   713  10C4  341E               	retlw	30
+   714  10C5  341E               	retlw	30
+   715  10C6  341E               	retlw	30
+   716  10C7  3400               	retlw	0
+   717  10C8  3400               	retlw	0
+   718  10C9  3400               	retlw	0
+   719  10CA  3400               	retlw	0
+   720  10CB  3400               	retlw	0
+   721  10CC  3400               	retlw	0
+   722  10CD  3400               	retlw	0
+   723  10CE  3400               	retlw	0
+   724  10CF  3400               	retlw	0
+   725  10D0  3400               	retlw	0
+   726  10D1  3400               	retlw	0
+   727  10D2  3400               	retlw	0
+   728  10D3  3400               	retlw	0
+   729  10D4  3400               	retlw	0
+   730  10D5  3400               	retlw	0
+   731  10D6  3400               	retlw	0
+   732  10D7  3400               	retlw	0
+   733  10D8  3400               	retlw	0
+   734  10D9  3400               	retlw	0
+   735  10DA  3400               	retlw	0
+   736  10DB  3400               	retlw	0
+   737  10DC  3400               	retlw	0
+   738  10DD  34DD               	retlw	221
+   739  10DE  34DE               	retlw	222
+   740  10DF  34DF               	retlw	223
+   741  10E0  34E0               	retlw	224
+   742  10E1  34E1               	retlw	225
+   743  10E2  34E2               	retlw	226
+   744  10E3  34E3               	retlw	227
+   745  10E4  34E4               	retlw	228
+   746  10E5  34E5               	retlw	229
+   747  10E6  34E6               	retlw	230
+   748  10E7  3400               	retlw	0
+   749  10E8  3401               	retlw	1
+   750  10E9  3402               	retlw	2
+   751  10EA  3404               	retlw	4
+   752  10EB  3406               	retlw	6
+   753  10EC  3408               	retlw	8
+   754  10ED  3409               	retlw	9
+   755  10EE  340A               	retlw	10
+   756  10EF  340C               	retlw	12
+   757  10F0  340E               	retlw	14
+   758  10F1  340F               	retlw	15
+   759  10F2  3410               	retlw	16
+   760  10F3  3412               	retlw	18
+   761  10F4  3414               	retlw	20
+   762  10F5  3416               	retlw	22
+   763  10F6  3418               	retlw	24
+   764  10F7  341A               	retlw	26
+   765  10F8  341B               	retlw	27
+   766  10F9  341C               	retlw	28
+   767  10FA  341D               	retlw	29
+   768  10FB  341E               	retlw	30
+   769  10FC  341E               	retlw	30
+   770  10FD  341E               	retlw	30
+   771  10FE  341E               	retlw	30
+   772  10FF  341E               	retlw	30
+   773  1100                     __end_of_LPFLookupTable:	
+   774                           
+   775                           	psect	stringtext2
+   776  1800                     __pstringtext2:	
+   777  1800                     _maxLEDs:	
+   778  1800  341E               	retlw	30
+   779  1801                     __end_of_maxLEDs:	
+   780  0063                     _RA3	set	99
+   781  009C                     _ADRESH	set	156
+   782  009F                     _ADCON2	set	159
+   783  009E                     _ADCON1	set	158
+   784  009D                     _ADCON0	set	157
+   785  008E                     _TRISC	set	142
+   786  008D                     _TRISB	set	141
+   787  008C                     _TRISA	set	140
+   788  0095                     _OPTION_REG	set	149
+   789  0099                     _OSCCON	set	153
+   790  04E9                     _GO	set	1257
+   791  04E8                     _ADON	set	1256
+   792  010E                     _LATC	set	270
+   793  010D                     _LATB	set	269
+   794  010C                     _LATA	set	268
+   795  018E                     _ANSELC	set	398
+   796  018D                     _ANSELB	set	397
+   797  018C                     _ANSELA	set	396
+   798  039B                     _ACTCON	set	923
+   799                           
+   800                           ; #config settings
+   801  0000                     
+   802                           	psect	cinit
+   803  0FE4                     start_initialization:	
+   804  0FE4                     __initialization:	
+   805                           
+   806                           ; Initialize objects allocated to BANK0
+   807  0FE4  3078               	movlw	low __pidataBANK0
+   808  0FE5  0084               	movwf	4
+   809  0FE6  3097               	movlw	(high __pidataBANK0)| (0+128)
+   810  0FE7  0085               	movwf	5
+   811  0FE8  302B               	movlw	low __pdataBANK0
+   812  0FE9  0086               	movwf	6
+   813  0FEA  3000               	movlw	high __pdataBANK0
+   814  0FEB  0087               	movwf	7
+   815  0FEC  300B               	movlw	11
+   816  0FED  3197  276B         	fcall	init_ram
+   817                           
+   818                           ; Clear objects allocated to COMMON
+   819  0FEF  01FB               	clrf	__pbssCOMMON& (0+127)
+   820  0FF0  01FC               	clrf	(__pbssCOMMON+1)& (0+127)
+   821  0FF1  01FD               	clrf	(__pbssCOMMON+2)& (0+127)
+   822                           
+   823                           ; Clear objects allocated to BANK0
+   824  0FF2  01A0               	clrf	__pbssBANK0& (0+127)
+   825  0FF3  01A1               	clrf	(__pbssBANK0+1)& (0+127)
+   826  0FF4  01A2               	clrf	(__pbssBANK0+2)& (0+127)
+   827  0FF5  01A3               	clrf	(__pbssBANK0+3)& (0+127)
+   828  0FF6  01A4               	clrf	(__pbssBANK0+4)& (0+127)
+   829  0FF7  01A5               	clrf	(__pbssBANK0+5)& (0+127)
+   830  0FF8  01A6               	clrf	(__pbssBANK0+6)& (0+127)
+   831  0FF9  01A7               	clrf	(__pbssBANK0+7)& (0+127)
+   832  0FFA  01A8               	clrf	(__pbssBANK0+8)& (0+127)
+   833  0FFB  01A9               	clrf	(__pbssBANK0+9)& (0+127)
+   834  0FFC  01AA               	clrf	(__pbssBANK0+10)& (0+127)
+   835  0FFD                     end_of_initialization:	
+   836                           ;End of C runtime variable initialization code
+   837                           
+   838  0FFD                     __end_of__initialization:	
+   839  0FFD  0020               	movlb	0
+   840  0FFE  318F  2F05         	ljmp	_main	;jump to C main() function
+   841                           
+   842                           	psect	bssCOMMON
+   843  007B                     __pbssCOMMON:	
+   844  007B                     _i:	
+   845  007B                     	ds	1
+   846  007C                     _blue:	
+   847  007C                     	ds	1
+   848  007D                     _red:	
+   849  007D                     	ds	1
+   850                           
+   851                           	psect	bssBANK0
+   852  0020                     __pbssBANK0:	
+   853  0020                     _temp:	
+   854  0020                     	ds	1
+   855  0021                     _tempBlue:	
+   856  0021                     	ds	1
+   857  0022                     _tempGreen:	
+   858  0022                     	ds	1
+   859  0023                     _tempRed:	
+   860  0023                     	ds	1
+   861  0024                     _max4:	
+   862  0024                     	ds	1
+   863  0025                     _max3:	
+   864  0025                     	ds	1
+   865  0026                     _max2:	
+   866  0026                     	ds	1
+   867  0027                     _max1:	
+   868  0027                     	ds	1
+   869  0028                     _tempIN:	
+   870  0028                     	ds	1
+   871  0029                     _LPFAvg:	
+   872  0029                     	ds	1
+   873  002A                     _lastVal:	
+   874  002A                     	ds	1
+   875                           
+   876                           	psect	dataBANK0
+   877  002B                     __pdataBANK0:	
+   878  002B                     _LPFInput:	
+   879  002B                     	ds	10
+   880  0035                     _green:	
+   881  0035                     	ds	1
+   882                           
+   883                           	psect	inittext
+   884  176B                     init_ram:	
+   885  176B  00FE               	movwf	126
+   886  176C                     initloop:	
+   887  176C  0012               	moviw fsr0++
+   888  176D  001E               	movwi fsr1++
+   889  176E  0BFE               	decfsz	126,f
+   890  176F  2F6C               	goto	initloop
+   891  1770  3400               	retlw	0
+   892                           
+   893                           	psect	cstackCOMMON
+   894  0070                     __pcstackCOMMON:	
+   895  0070                     ?_initOsc:	
+   896  0070                     ??_initOsc:	
+   897                           ; 1 bytes @ 0x0
+   898                           
+   899  0070                     ?_initPorts:	
+   900                           ; 1 bytes @ 0x0
+   901                           
+   902  0070                     ??_initPorts:	
+   903                           ; 1 bytes @ 0x0
+   904                           
+   905  0070                     ?_adConvert:	
+   906                           ; 1 bytes @ 0x0
+   907                           
+   908  0070                     ??_adConvert:	
+   909                           ; 1 bytes @ 0x0
+   910                           
+   911  0070                     ?_NeoPixel1:	
+   912                           ; 1 bytes @ 0x0
+   913                           
+   914  0070                     ?_NeoPixel2:	
+   915                           ; 1 bytes @ 0x0
+   916                           
+   917  0070                     ?_NeoPixel3:	
+   918                           ; 1 bytes @ 0x0
+   919                           
+   920  0070                     ?_NeoPixel4:	
+   921                           ; 1 bytes @ 0x0
+   922                           
+   923  0070                     ?_NeoPixel5:	
+   924                           ; 1 bytes @ 0x0
+   925                           
+   926  0070                     ?_NeoPixel6:	
+   927                           ; 1 bytes @ 0x0
+   928                           
+   929  0070                     ?_NeoPixel7:	
+   930                           ; 1 bytes @ 0x0
+   931                           
+   932  0070                     ?_main:	
+   933                           ; 1 bytes @ 0x0
+   934                           
+   935  0070                     ?___awdiv:	
+   936                           ; 2 bytes @ 0x0
+   937                           
+   938  0070                     adConvert@chan:	
+   939                           ; 2 bytes @ 0x0
+   940                           
+   941  0070                     NeoPixel1@leds:	
+   942                           ; 1 bytes @ 0x0
+   943                           
+   944  0070                     NeoPixel2@leds:	
+   945                           ; 1 bytes @ 0x0
+   946                           
+   947  0070                     NeoPixel3@leds:	
+   948                           ; 1 bytes @ 0x0
+   949                           
+   950  0070                     NeoPixel4@leds:	
+   951                           ; 1 bytes @ 0x0
+   952                           
+   953  0070                     NeoPixel5@leds:	
+   954                           ; 1 bytes @ 0x0
+   955                           
+   956  0070                     NeoPixel6@leds:	
+   957                           ; 1 bytes @ 0x0
+   958                           
+   959  0070                     NeoPixel7@height:	
+   960                           ; 1 bytes @ 0x0
+   961                           
+   962  0070                     NeoPixel7@leds:	
+   963                           ; 1 bytes @ 0x0
+   964                           
+   965  0070                     ___awdiv@divisor:	
+   966                           ; 1 bytes @ 0x0
+   967                           
+   968                           
+   969                           ; 2 bytes @ 0x0
+   970  0070                     	ds	1
+   971  0071                     ??_NeoPixel1:	
+   972  0071                     ??_NeoPixel2:	
+   973                           ; 1 bytes @ 0x1
+   974                           
+   975  0071                     ??_NeoPixel3:	
+   976                           ; 1 bytes @ 0x1
+   977                           
+   978  0071                     ??_NeoPixel4:	
+   979                           ; 1 bytes @ 0x1
+   980                           
+   981  0071                     ??_NeoPixel5:	
+   982                           ; 1 bytes @ 0x1
+   983                           
+   984  0071                     ??_NeoPixel6:	
+   985                           ; 1 bytes @ 0x1
+   986                           
+   987  0071                     ??_NeoPixel7:	
+   988                           ; 1 bytes @ 0x1
+   989                           
+   990                           
+   991                           ; 1 bytes @ 0x1
+   992  0071                     	ds	1
+   993  0072                     ___awdiv@dividend:	
+   994                           
+   995                           ; 2 bytes @ 0x2
+   996  0072                     	ds	1
+   997  0073                     NeoPixel1@height:	
+   998  0073                     NeoPixel2@height:	
+   999                           ; 1 bytes @ 0x3
+  1000                           
+  1001  0073                     NeoPixel3@height:	
+  1002                           ; 1 bytes @ 0x3
+  1003                           
+  1004  0073                     NeoPixel4@height:	
+  1005                           ; 1 bytes @ 0x3
+  1006                           
+  1007  0073                     NeoPixel5@height:	
+  1008                           ; 1 bytes @ 0x3
+  1009                           
+  1010  0073                     NeoPixel6@height:	
+  1011                           ; 1 bytes @ 0x3
+  1012                           
+  1013                           
+  1014                           ; 1 bytes @ 0x3
+  1015  0073                     	ds	1
+  1016  0074                     ??___awdiv:	
+  1017  0074                     _NeoPixel1$73:	
+  1018                           ; 1 bytes @ 0x4
+  1019                           
+  1020  0074                     _NeoPixel2$77:	
+  1021                           ; 2 bytes @ 0x4
+  1022                           
+  1023  0074                     _NeoPixel3$81:	
+  1024                           ; 2 bytes @ 0x4
+  1025                           
+  1026  0074                     _NeoPixel4$85:	
+  1027                           ; 2 bytes @ 0x4
+  1028                           
+  1029  0074                     _NeoPixel5$89:	
+  1030                           ; 2 bytes @ 0x4
+  1031                           
+  1032  0074                     _NeoPixel6$93:	
+  1033                           ; 2 bytes @ 0x4
+  1034                           
+  1035                           
+  1036                           ; 2 bytes @ 0x4
+  1037  0074                     	ds	1
+  1038  0075                     ___awdiv@counter:	
+  1039                           
+  1040                           ; 1 bytes @ 0x5
+  1041  0075                     	ds	1
+  1042  0076                     ?_lights:	
+  1043  0076                     lights@numLeds:	
+  1044                           ; 1 bytes @ 0x6
+  1045                           
+  1046  0076                     ___awdiv@sign:	
+  1047                           ; 1 bytes @ 0x6
+  1048                           
+  1049                           
+  1050                           ; 1 bytes @ 0x6
+  1051  0076                     	ds	1
+  1052  0077                     ??_lights:	
+  1053  0077                     ___awdiv@quotient:	
+  1054                           ; 1 bytes @ 0x7
+  1055                           
+  1056                           
+  1057                           ; 2 bytes @ 0x7
+  1058  0077                     	ds	1
+  1059  0078                     lights@height2:	
+  1060                           
+  1061                           ; 1 bytes @ 0x8
+  1062  0078                     	ds	1
+  1063  0079                     _main$115:	
+  1064                           
+  1065                           ; 2 bytes @ 0x9
+  1066  0079                     	ds	2
+  1067                           
+  1068                           	psect	cstackBANK0
+  1069  0036                     __pcstackBANK0:	
+  1070  0036                     ??_main:	
+  1071                           
+  1072                           ; 1 bytes @ 0x0
+  1073  0036                     	ds	9
+  1074                           
+  1075                           	psect	maintext
+  1076  0F05                     __pmaintext:	
+  1077 ;;
+  1078 ;;Main: autosize = 0, tempsize = 9, incstack = 0, save=0
+  1079 ;;
+  1080 ;; *************** function _main *****************
+  1081 ;; Defined at:
+  1082 ;;		line 423 in file "UBMPLPF.c"
+  1083 ;; Parameters:    Size  Location     Type
+  1084 ;;		None
+  1085 ;; Auto vars:     Size  Location     Type
+  1086 ;;		None
+  1087 ;; Return value:  Size  Location     Type
+  1088 ;;                  2  205[None  ] int 
+  1089 ;; Registers used:
+  1090 ;;		wreg, fsr0l, fsr0h, fsr1l, fsr1h, status,2, status,0, pclath, cstack
+  1091 ;; Tracked objects:
+  1092 ;;		On entry : B1F/0
+  1093 ;;		On exit  : 0/0
+  1094 ;;		Unchanged: 0/0
+  1095 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12
+  1096 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  1097 ;;      Locals:         2       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  1098 ;;      Temps:          0       9       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  1099 ;;      Totals:         2       9       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  1100 ;;Total ram usage:       11 bytes
+  1101 ;; Hardware stack levels required when called:    2
+  1102 ;; This function calls:
+  1103 ;;		___awdiv
+  1104 ;;		_adConvert
+  1105 ;;		_initOsc
+  1106 ;;		_initPorts
+  1107 ;;		_lights
+  1108 ;; This function is called by:
+  1109 ;;		Startup code after reset
+  1110 ;; This function uses a non-reentrant model
+  1111 ;;
+  1112                           
+  1113                           
+  1114                           ;psect for function _main
+  1115  0F05                     _main:	
+  1116                           
+  1117                           ;UBMPLPF.c: 424: initOsc();
+  1118                           
+  1119                           ;incstack = 0
+  1120                           ; Regs used in _main: [wreg-fsr1h+status,2+status,0+pclath+cstack]
+  1121  0F05  3197  2771  318F   	fcall	_initOsc
+  1122                           
+  1123                           ;UBMPLPF.c: 425: initPorts();
+  1124  0F08  3197  2796  318F   	fcall	_initPorts
+  1125                           
+  1126                           ;UBMPLPF.c: 427: _delay((unsigned long)((200)*(48000000/4000000.0)));
+  1127  0F0B  3004               	movlw	4
+  1128  0F0C  0020               	movlb	0	; select bank0
+  1129  0F0D  00B6               	movwf	??_main
+  1130  0F0E  301C               	movlw	28
+  1131  0F0F                     u1637:	
+  1132  0F0F  0B89               	decfsz	9,f
+  1133  0F10  2F0F               	goto	u1637
+  1134  0F11  0BB6               	decfsz	??_main,f
+  1135  0F12  2F0F               	goto	u1637
+  1136  0F13  0000               	nop
+  1137  0F14                     l1297:	
+  1138                           ;UBMPLPF.c: 430: while (1) {
+  1139                           
+  1140                           
+  1141                           ;UBMPLPF.c: 431: max1 = 0;
+  1142  0F14  0020               	movlb	0	; select bank0
+  1143  0F15  01A7               	clrf	_max1
+  1144                           
+  1145                           ;UBMPLPF.c: 432: max2 = 0;
+  1146  0F16  01A6               	clrf	_max2
+  1147                           
+  1148                           ;UBMPLPF.c: 433: max3 = 0;
+  1149  0F17  01A5               	clrf	_max3
+  1150                           
+  1151                           ;UBMPLPF.c: 434: max4 = 0;
+  1152  0F18  01A4               	clrf	_max4
+  1153                           
+  1154                           ;UBMPLPF.c: 435: tempIN = adConvert(0b00001100);
+  1155  0F19  300C               	movlw	12
+  1156  0F1A  3197  2783  318F   	fcall	_adConvert
+  1157  0F1D  0020               	movlb	0	; select bank0
+  1158  0F1E  00B6               	movwf	??_main
+  1159  0F1F  0836               	movf	??_main,w
+  1160  0F20  00A8               	movwf	_tempIN
+  1161                           
+  1162                           ;UBMPLPF.c: 436: LPFInput[lastVal] = tempIN;
+  1163  0F21  0828               	movf	_tempIN,w
+  1164  0F22  00B6               	movwf	??_main
+  1165  0F23  082A               	movf	_lastVal,w
+  1166  0F24  3E2B               	addlw	(low (_LPFInput| 0))& (0+255)
+  1167  0F25  0086               	movwf	6
+  1168  0F26  0187               	clrf	7
+  1169  0F27  0836               	movf	??_main,w
+  1170  0F28  0081               	movwf	1
+  1171                           
+  1172                           ;UBMPLPF.c: 437: lastVal = (lastVal == 9) ? 0 : lastVal + 1;
+  1173  0F29  3009               	movlw	9
+  1174  0F2A  062A               	xorwf	_lastVal,w
+  1175  0F2B  1903               	btfsc	3,2
+  1176  0F2C  2F35               	goto	l1313
+  1177  0F2D  082A               	movf	_lastVal,w
+  1178  0F2E  3E01               	addlw	1
+  1179  0F2F  00F9               	movwf	_main$115
+  1180  0F30  3000               	movlw	0
+  1181  0F31  1803               	skipnc
+  1182  0F32  3001               	movlw	1
+  1183  0F33  00FA               	movwf	_main$115+1
+  1184  0F34  2F37               	goto	l1315
+  1185  0F35                     l1313:	
+  1186  0F35  01F9               	clrf	_main$115
+  1187  0F36  01FA               	clrf	_main$115+1
+  1188  0F37                     l1315:	
+  1189  0F37  0879               	movf	_main$115,w
+  1190  0F38  00B6               	movwf	??_main
+  1191  0F39  0836               	movf	??_main,w
+  1192  0F3A  00AA               	movwf	_lastVal
+  1193                           
+  1194                           ;UBMPLPF.c: 438: for (i = 0; i < 10; i++) {
+  1195  0F3B  01FB               	clrf	_i
+  1196  0F3C  300A               	movlw	10
+  1197  0F3D  027B               	subwf	_i,w
+  1198  0F3E  1803               	btfsc	3,0
+  1199  0F3F  2FA3               	goto	l1347
+  1200  0F40                     l1321:	
+  1201                           
+  1202                           ;UBMPLPF.c: 439: if (LPFInput[i] > max1) {
+  1203  0F40  087B               	movf	_i,w
+  1204  0F41  3E2B               	addlw	(low (_LPFInput| 0))& (0+255)
+  1205  0F42  0086               	movwf	6
+  1206  0F43  0187               	clrf	7
+  1207  0F44  0801               	movf	1,w
+  1208  0F45  0227               	subwf	_max1,w
+  1209  0F46  1803               	skipnc
+  1210  0F47  2F5D               	goto	l1327
+  1211                           
+  1212                           ;UBMPLPF.c: 440: max4 = max3;
+  1213  0F48  0825               	movf	_max3,w
+  1214  0F49  00B6               	movwf	??_main
+  1215  0F4A  0836               	movf	??_main,w
+  1216  0F4B  00A4               	movwf	_max4
+  1217                           
+  1218                           ;UBMPLPF.c: 441: max3 = max2;
+  1219  0F4C  0826               	movf	_max2,w
+  1220  0F4D  00B6               	movwf	??_main
+  1221  0F4E  0836               	movf	??_main,w
+  1222  0F4F  00A5               	movwf	_max3
+  1223                           
+  1224                           ;UBMPLPF.c: 442: max2 = max1;
+  1225  0F50  0827               	movf	_max1,w
+  1226  0F51  00B6               	movwf	??_main
+  1227  0F52  0836               	movf	??_main,w
+  1228  0F53  00A6               	movwf	_max2
+  1229                           
+  1230                           ;UBMPLPF.c: 443: max1 = LPFInput[i];
+  1231  0F54  087B               	movf	_i,w
+  1232  0F55  3E2B               	addlw	(low (_LPFInput| 0))& (0+255)
+  1233  0F56  0086               	movwf	6
+  1234  0F57  0187               	clrf	7
+  1235  0F58  0801               	movf	1,w
+  1236  0F59  00B6               	movwf	??_main
+  1237  0F5A  0836               	movf	??_main,w
+  1238  0F5B  00A7               	movwf	_max1
+  1239                           
+  1240                           ;UBMPLPF.c: 444: } else if (LPFInput[i] > max2) {
+  1241  0F5C  2F9B               	goto	l1343
+  1242  0F5D                     l1327:	
+  1243  0F5D  087B               	movf	_i,w
+  1244  0F5E  3E2B               	addlw	(low (_LPFInput| 0))& (0+255)
+  1245  0F5F  0086               	movwf	6
+  1246  0F60  0187               	clrf	7
+  1247  0F61  0801               	movf	1,w
+  1248  0F62  0226               	subwf	_max2,w
+  1249  0F63  1803               	skipnc
+  1250  0F64  2F76               	goto	l1333
+  1251                           
+  1252                           ;UBMPLPF.c: 445: max4 = max3;
+  1253  0F65  0825               	movf	_max3,w
+  1254  0F66  00B6               	movwf	??_main
+  1255  0F67  0836               	movf	??_main,w
+  1256  0F68  00A4               	movwf	_max4
+  1257                           
+  1258                           ;UBMPLPF.c: 446: max3 = max2;
+  1259  0F69  0826               	movf	_max2,w
+  1260  0F6A  00B6               	movwf	??_main
+  1261  0F6B  0836               	movf	??_main,w
+  1262  0F6C  00A5               	movwf	_max3
+  1263                           
+  1264                           ;UBMPLPF.c: 447: max2 = LPFInput[i];
+  1265  0F6D  087B               	movf	_i,w
+  1266  0F6E  3E2B               	addlw	(low (_LPFInput| 0))& (0+255)
+  1267  0F6F  0086               	movwf	6
+  1268  0F70  0187               	clrf	7
+  1269  0F71  0801               	movf	1,w
+  1270  0F72  00B6               	movwf	??_main
+  1271  0F73  0836               	movf	??_main,w
+  1272  0F74  00A6               	movwf	_max2
+  1273                           
+  1274                           ;UBMPLPF.c: 448: } else if (LPFInput[i] > max3) {
+  1275  0F75  2F9B               	goto	l1343
+  1276  0F76                     l1333:	
+  1277  0F76  087B               	movf	_i,w
+  1278  0F77  3E2B               	addlw	(low (_LPFInput| 0))& (0+255)
+  1279  0F78  0086               	movwf	6
+  1280  0F79  0187               	clrf	7
+  1281  0F7A  0801               	movf	1,w
+  1282  0F7B  0225               	subwf	_max3,w
+  1283  0F7C  1803               	skipnc
+  1284  0F7D  2F8B               	goto	l1339
+  1285                           
+  1286                           ;UBMPLPF.c: 449: max4 = max3;
+  1287  0F7E  0825               	movf	_max3,w
+  1288  0F7F  00B6               	movwf	??_main
+  1289  0F80  0836               	movf	??_main,w
+  1290  0F81  00A4               	movwf	_max4
+  1291                           
+  1292                           ;UBMPLPF.c: 450: max3 = LPFInput[i];
+  1293  0F82  087B               	movf	_i,w
+  1294  0F83  3E2B               	addlw	(low (_LPFInput| 0))& (0+255)
+  1295  0F84  0086               	movwf	6
+  1296  0F85  0187               	clrf	7
+  1297  0F86  0801               	movf	1,w
+  1298  0F87  00B6               	movwf	??_main
+  1299  0F88  0836               	movf	??_main,w
+  1300  0F89  00A5               	movwf	_max3
+  1301                           
+  1302                           ;UBMPLPF.c: 451: } else if (LPFInput[i] > max4) {
+  1303  0F8A  2F9B               	goto	l1343
+  1304  0F8B                     l1339:	
+  1305  0F8B  087B               	movf	_i,w
+  1306  0F8C  3E2B               	addlw	(low (_LPFInput| 0))& (0+255)
+  1307  0F8D  0086               	movwf	6
+  1308  0F8E  0187               	clrf	7
+  1309  0F8F  0801               	movf	1,w
+  1310  0F90  0224               	subwf	_max4,w
+  1311  0F91  1803               	skipnc
+  1312  0F92  2F9B               	goto	l1343
+  1313                           
+  1314                           ;UBMPLPF.c: 452: max4 = LPFInput[i];
+  1315  0F93  087B               	movf	_i,w
+  1316  0F94  3E2B               	addlw	(low (_LPFInput| 0))& (0+255)
+  1317  0F95  0086               	movwf	6
+  1318  0F96  0187               	clrf	7
+  1319  0F97  0801               	movf	1,w
+  1320  0F98  00B6               	movwf	??_main
+  1321  0F99  0836               	movf	??_main,w
+  1322  0F9A  00A4               	movwf	_max4
+  1323  0F9B                     l1343:	
+  1324  0F9B  3001               	movlw	1
+  1325  0F9C  00B6               	movwf	??_main
+  1326  0F9D  0836               	movf	??_main,w
+  1327  0F9E  07FB               	addwf	_i,f
+  1328  0F9F  300A               	movlw	10
+  1329  0FA0  027B               	subwf	_i,w
+  1330  0FA1  1C03               	skipc
+  1331  0FA2  2F40               	goto	l1321
+  1332  0FA3                     l1347:	
+  1333                           
+  1334                           ;UBMPLPF.c: 453: }
+  1335                           ;UBMPLPF.c: 454: }
+  1336                           ;UBMPLPF.c: 455: LPFAvg = (max1 + max2 + max3 + max4) / 4;
+  1337  0FA3  3004               	movlw	4
+  1338  0FA4  00F0               	movwf	___awdiv@divisor
+  1339  0FA5  3000               	movlw	0
+  1340  0FA6  00F1               	movwf	___awdiv@divisor+1
+  1341  0FA7  0824               	movf	_max4,w
+  1342  0FA8  00B6               	movwf	??_main
+  1343  0FA9  01B7               	clrf	??_main+1
+  1344  0FAA  0825               	movf	_max3,w
+  1345  0FAB  00B8               	movwf	??_main+2
+  1346  0FAC  01B9               	clrf	??_main+3
+  1347  0FAD  0827               	movf	_max1,w
+  1348  0FAE  0726               	addwf	_max2,w
+  1349  0FAF  00BA               	movwf	??_main+4
+  1350  0FB0  01BB               	clrf	??_main+5
+  1351  0FB1  0DBB               	rlf	??_main+5,f
+  1352  0FB2  0838               	movf	??_main+2,w
+  1353  0FB3  073A               	addwf	??_main+4,w
+  1354  0FB4  00BC               	movwf	??_main+6
+  1355  0FB5  0839               	movf	??_main+3,w
+  1356  0FB6  3D3B               	addwfc	??_main+5,w
+  1357  0FB7  00BD               	movwf	??_main+7
+  1358  0FB8  0836               	movf	??_main,w
+  1359  0FB9  073C               	addwf	??_main+6,w
+  1360  0FBA  00F2               	movwf	___awdiv@dividend
+  1361  0FBB  0837               	movf	??_main+1,w
+  1362  0FBC  3D3D               	addwfc	??_main+7,w
+  1363  0FBD  00F3               	movwf	___awdiv@dividend+1
+  1364  0FBE  3197  27AF  318F   	fcall	___awdiv
+  1365  0FC1  0870               	movf	?___awdiv,w
+  1366  0FC2  0020               	movlb	0	; select bank0
+  1367  0FC3  00BE               	movwf	??_main+8
+  1368  0FC4  083E               	movf	??_main+8,w
+  1369  0FC5  00A9               	movwf	_LPFAvg
+  1370                           
+  1371                           ;UBMPLPF.c: 456: lights(0b10101010, maxLEDs);
+  1372  0FC6  3000               	movlw	low (_maxLEDs| (0+32768))
+  1373  0FC7  0084               	movwf	4
+  1374  0FC8  3098               	movlw	high (_maxLEDs| (0+32768))
+  1375  0FC9  0085               	movwf	5
+  1376  0FCA  0800               	movf	0,w	;code access
+  1377  0FCB  00B6               	movwf	??_main
+  1378  0FCC  0836               	movf	??_main,w
+  1379  0FCD  00F6               	movwf	lights@numLeds
+  1380  0FCE  30AA               	movlw	170
+  1381  0FCF  318C  240A  318F   	fcall	_lights
+  1382                           
+  1383                           ;UBMPLPF.c: 457: _delay((unsigned long)((25)*(48000000/4000.0)));
+  1384  0FD2  3002               	movlw	2
+  1385  0FD3  0020               	movlb	0	; select bank0
+  1386  0FD4  00B7               	movwf	??_main+1
+  1387  0FD5  3086               	movlw	134
+  1388  0FD6  00B6               	movwf	??_main
+  1389  0FD7  3099               	movlw	153
+  1390  0FD8                     u1647:	
+  1391  0FD8  0B89               	decfsz	9,f
+  1392  0FD9  2FD8               	goto	u1647
+  1393  0FDA  0BB6               	decfsz	??_main,f
+  1394  0FDB  2FD8               	goto	u1647
+  1395  0FDC  0BB7               	decfsz	??_main+1,f
+  1396  0FDD  2FD8               	goto	u1647
+  1397                           
+  1398                           ;UBMPLPF.c: 458: if (RA3 == 0)
+  1399  0FDE  0020               	movlb	0	; select bank0
+  1400  0FDF  198C               	btfsc	12,3	;volatile
+  1401  0FE0  2F14               	goto	l1297
+  1402  0FE1  3180               	movlp	0	;# 
+  1403  0FE2  281C               	goto	28	;# 
+  1404  0FE3  2F14               	goto	l1297
+  1405  0FE4                     __end_of_main:	
+  1406                           
+  1407                           	psect	text1
+  1408  0C0A                     __ptext1:	
+  1409 ;; *************** function _lights *****************
+  1410 ;; Defined at:
+  1411 ;;		line 410 in file "UBMPLPF.c"
+  1412 ;; Parameters:    Size  Location     Type
+  1413 ;;  height2         1    wreg     unsigned char 
+  1414 ;;  numLeds         1    6[COMMON] unsigned char 
+  1415 ;; Auto vars:     Size  Location     Type
+  1416 ;;  height2         1    8[COMMON] unsigned char 
+  1417 ;; Return value:  Size  Location     Type
+  1418 ;;                  1    wreg      void 
+  1419 ;; Registers used:
+  1420 ;;		wreg, status,2, status,0, pclath, cstack
+  1421 ;; Tracked objects:
+  1422 ;;		On entry : 0/0
+  1423 ;;		On exit  : 0/0
+  1424 ;;		Unchanged: 0/0
+  1425 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12
+  1426 ;;      Params:         1       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  1427 ;;      Locals:         1       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  1428 ;;      Temps:          1       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  1429 ;;      Totals:         3       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  1430 ;;Total ram usage:        3 bytes
+  1431 ;; Hardware stack levels used:    1
+  1432 ;; Hardware stack levels required when called:    1
+  1433 ;; This function calls:
+  1434 ;;		_NeoPixel1
+  1435 ;;		_NeoPixel2
+  1436 ;;		_NeoPixel3
+  1437 ;;		_NeoPixel4
+  1438 ;;		_NeoPixel5
+  1439 ;;		_NeoPixel6
+  1440 ;;		_NeoPixel7
+  1441 ;; This function is called by:
+  1442 ;;		_main
+  1443 ;; This function uses a non-reentrant model
+  1444 ;;
+  1445                           
+  1446                           
+  1447                           ;psect for function _lights
+  1448  0C0A                     _lights:	
+  1449                           
+  1450                           ;incstack = 0
+  1451                           ; Regs used in _lights: [wreg+status,2+status,0+pclath+cstack]
+  1452                           ;lights@height2 stored from wreg
+  1453  0C0A  00F8               	movwf	lights@height2
+  1454                           
+  1455                           ;UBMPLPF.c: 411: NeoPixel1(height2, numLeds);
+  1456  0C0B  0876               	movf	lights@numLeds,w
+  1457  0C0C  00F7               	movwf	??_lights
+  1458  0C0D  0877               	movf	??_lights,w
+  1459  0C0E  00F0               	movwf	NeoPixel1@leds
+  1460  0C0F  0878               	movf	lights@height2,w
+  1461  0C10  318C  249B  318C   	fcall	_NeoPixel1
+  1462                           
+  1463                           ;UBMPLPF.c: 412: NeoPixel2(height2, numLeds);
+  1464  0C13  0876               	movf	lights@numLeds,w
+  1465  0C14  00F7               	movwf	??_lights
+  1466  0C15  0877               	movf	??_lights,w
+  1467  0C16  00F0               	movwf	NeoPixel2@leds
+  1468  0C17  0878               	movf	lights@height2,w
+  1469  0C18  318D  2502  318C   	fcall	_NeoPixel2
+  1470                           
+  1471                           ;UBMPLPF.c: 413: NeoPixel3(height2, numLeds);
+  1472  0C1B  0876               	movf	lights@numLeds,w
+  1473  0C1C  00F7               	movwf	??_lights
+  1474  0C1D  0877               	movf	??_lights,w
+  1475  0C1E  00F0               	movwf	NeoPixel3@leds
+  1476  0C1F  0878               	movf	lights@height2,w
+  1477  0C20  318D  2569  318C   	fcall	_NeoPixel3
+  1478                           
+  1479                           ;UBMPLPF.c: 414: NeoPixel4(height2, numLeds);
+  1480  0C23  0876               	movf	lights@numLeds,w
+  1481  0C24  00F7               	movwf	??_lights
+  1482  0C25  0877               	movf	??_lights,w
+  1483  0C26  00F0               	movwf	NeoPixel4@leds
+  1484  0C27  0878               	movf	lights@height2,w
+  1485  0C28  318D  25D0  318C   	fcall	_NeoPixel4
+  1486                           
+  1487                           ;UBMPLPF.c: 415: NeoPixel5(height2, numLeds);
+  1488  0C2B  0876               	movf	lights@numLeds,w
+  1489  0C2C  00F7               	movwf	??_lights
+  1490  0C2D  0877               	movf	??_lights,w
+  1491  0C2E  00F0               	movwf	NeoPixel5@leds
+  1492  0C2F  0878               	movf	lights@height2,w
+  1493  0C30  318E  2637  318C   	fcall	_NeoPixel5
+  1494                           
+  1495                           ;UBMPLPF.c: 416: NeoPixel6(height2, numLeds);
+  1496  0C33  0876               	movf	lights@numLeds,w
+  1497  0C34  00F7               	movwf	??_lights
+  1498  0C35  0877               	movf	??_lights,w
+  1499  0C36  00F0               	movwf	NeoPixel6@leds
+  1500  0C37  0878               	movf	lights@height2,w
+  1501  0C38  318E  269E  318C   	fcall	_NeoPixel6
+  1502                           
+  1503                           ;UBMPLPF.c: 417: NeoPixel7(height2, numLeds);
+  1504  0C3B  0876               	movf	lights@numLeds,w
+  1505  0C3C  00F7               	movwf	??_lights
+  1506  0C3D  0877               	movf	??_lights,w
+  1507  0C3E  00F0               	movwf	NeoPixel7@leds
+  1508  0C3F  0878               	movf	lights@height2,w
+  1509  0C40  318C  2443         	fcall	_NeoPixel7
+  1510  0C42  0008               	return
+  1511  0C43                     __end_of_lights:	
+  1512                           
+  1513                           	psect	text2
+  1514  0C43                     __ptext2:	
+  1515 ;; *************** function _NeoPixel7 *****************
+  1516 ;; Defined at:
+  1517 ;;		line 362 in file "UBMPLPF.c"
+  1518 ;; Parameters:    Size  Location     Type
+  1519 ;;  height          1    wreg     unsigned char 
+  1520 ;;  leds            1    0[COMMON] unsigned char 
+  1521 ;; Auto vars:     Size  Location     Type
+  1522 ;;  height          1    0[COMMON] unsigned char 
+  1523 ;; Return value:  Size  Location     Type
+  1524 ;;                  1    wreg      void 
+  1525 ;; Registers used:
+  1526 ;;		wreg, status,2, status,0
+  1527 ;; Tracked objects:
+  1528 ;;		On entry : 0/0
+  1529 ;;		On exit  : 0/0
+  1530 ;;		Unchanged: 0/0
+  1531 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12
+  1532 ;;      Params:         1       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  1533 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  1534 ;;      Temps:          1       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  1535 ;;      Totals:         2       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  1536 ;;Total ram usage:        2 bytes
+  1537 ;; Hardware stack levels used:    1
+  1538 ;; This function calls:
+  1539 ;;		Nothing
+  1540 ;; This function is called by:
+  1541 ;;		_lights
+  1542 ;; This function uses a non-reentrant model
+  1543 ;;
+  1544                           
+  1545                           
+  1546                           ;psect for function _NeoPixel7
+  1547  0C43                     _NeoPixel7:	
+  1548                           
+  1549                           ;incstack = 0
+  1550                           ; Regs used in _NeoPixel7: [wreg+status,2+status,0]
+  1551  0C43  0870               	movf	NeoPixel7@leds,w
+  1552  0C44  1903               	btfsc	3,2
+  1553  0C45  0008               	return
+  1554                           
+  1555                           ;UBMPLPF.c: 364: temp = 0b10101010;
+  1556  0C46  30AA               	movlw	170
+  1557  0C47  00F1               	movwf	??_NeoPixel7
+  1558  0C48  0871               	movf	??_NeoPixel7,w
+  1559  0C49  0020               	movlb	0	; select bank0
+  1560  0C4A  00A0               	movwf	_temp
+  1561                           
+  1562                           ;UBMPLPF.c: 365: for (i = 8; i != 0; i--) {
+  1563  0C4B  3008               	movlw	8
+  1564  0C4C  00F1               	movwf	??_NeoPixel7
+  1565  0C4D  0871               	movf	??_NeoPixel7,w
+  1566  0C4E  00FB               	movwf	_i
+  1567  0C4F  087B               	movf	_i,w
+  1568  0C50  1903               	btfsc	3,2
+  1569  0C51  2C62               	goto	l1199
+  1570  0C52                     l192:	
+  1571  0C52  170E               	bsf	270,6	;# 
+  1572  0C53  0000               	nop	;# 
+  1573  0C54  1FA0               	btfss	_temp,7	;# 
+  1574  0C55  130E               	bcf	270,6	;# 
+  1575  0C56  0000               	nop	;# 
+  1576  0C57  0000               	nop	;# 
+  1577  0C58  0000               	nop	;# 
+  1578  0C59  0000               	nop	;# 
+  1579  0C5A  0000               	nop	;# 
+  1580  0C5B  35A0               	lslf	_temp,f	;# 
+  1581  0C5C  130E               	bcf	270,6	;# 
+  1582  0C5D  3001               	movlw	1
+  1583  0C5E  02FB               	subwf	_i,f
+  1584  0C5F  087B               	movf	_i,w
+  1585  0C60  1D03               	btfss	3,2
+  1586  0C61  2C52               	goto	l192
+  1587  0C62                     l1199:	
+  1588                           
+  1589                           ;UBMPLPF.c: 377: }
+  1590                           ;UBMPLPF.c: 378: temp = red;
+  1591  0C62  087D               	movf	_red,w
+  1592  0C63  00F1               	movwf	??_NeoPixel7
+  1593  0C64  0871               	movf	??_NeoPixel7,w
+  1594  0C65  0020               	movlb	0	; select bank0
+  1595  0C66  00A0               	movwf	_temp
+  1596                           
+  1597                           ;UBMPLPF.c: 379: for (i = 8; i != 0; i--) {
+  1598  0C67  3008               	movlw	8
+  1599  0C68  00F1               	movwf	??_NeoPixel7
+  1600  0C69  0871               	movf	??_NeoPixel7,w
+  1601  0C6A  00FB               	movwf	_i
+  1602  0C6B  087B               	movf	_i,w
+  1603  0C6C  1903               	btfsc	3,2
+  1604  0C6D  2C7D               	goto	l1207
+  1605  0C6E                     l194:	
+  1606  0C6E  170E               	bsf	270,6	;# 
+  1607  0C6F  0000               	nop	;# 
+  1608  0C70  0000               	nop	;# 
+  1609  0C71  1FA0               	btfss	_temp,7	;# 
+  1610  0C72  130E               	bcf	270,6	;# 
+  1611  0C73  0000               	nop	;# 
+  1612  0C74  0000               	nop	;# 
+  1613  0C75  0000               	nop	;# 
+  1614  0C76  35A0               	lslf	_temp,f	;# 
+  1615  0C77  130E               	bcf	270,6	;# 
+  1616  0C78  3001               	movlw	1
+  1617  0C79  02FB               	subwf	_i,f
+  1618  0C7A  087B               	movf	_i,w
+  1619  0C7B  1D03               	btfss	3,2
+  1620  0C7C  2C6E               	goto	l194
+  1621  0C7D                     l1207:	
+  1622                           
+  1623                           ;UBMPLPF.c: 390: }
+  1624                           ;UBMPLPF.c: 391: temp = blue;
+  1625  0C7D  087C               	movf	_blue,w
+  1626  0C7E  00F1               	movwf	??_NeoPixel7
+  1627  0C7F  0871               	movf	??_NeoPixel7,w
+  1628  0C80  0020               	movlb	0	; select bank0
+  1629  0C81  00A0               	movwf	_temp
+  1630                           
+  1631                           ;UBMPLPF.c: 392: for (i = 8; i != 0; i--) {
+  1632  0C82  3008               	movlw	8
+  1633  0C83  00F1               	movwf	??_NeoPixel7
+  1634  0C84  0871               	movf	??_NeoPixel7,w
+  1635  0C85  00FB               	movwf	_i
+  1636  0C86  087B               	movf	_i,w
+  1637  0C87  1903               	btfsc	3,2
+  1638  0C88  2C98               	goto	l1215
+  1639  0C89                     l196:	
+  1640  0C89  170E               	bsf	270,6	;# 
+  1641  0C8A  0000               	nop	;# 
+  1642  0C8B  0000               	nop	;# 
+  1643  0C8C  1FA0               	btfss	_temp,7	;# 
+  1644  0C8D  130E               	bcf	270,6	;# 
+  1645  0C8E  0000               	nop	;# 
+  1646  0C8F  0000               	nop	;# 
+  1647  0C90  0000               	nop	;# 
+  1648  0C91  35A0               	lslf	_temp,f	;# 
+  1649  0C92  130E               	bcf	270,6	;# 
+  1650  0C93  3001               	movlw	1
+  1651  0C94  02FB               	subwf	_i,f
+  1652  0C95  087B               	movf	_i,w
+  1653  0C96  1D03               	btfss	3,2
+  1654  0C97  2C89               	goto	l196
+  1655  0C98                     l1215:	
+  1656  0C98  3001               	movlw	1
+  1657  0C99  02F0               	subwf	NeoPixel7@leds,f
+  1658  0C9A  2C43               	goto	_NeoPixel7
+  1659  0C9B                     __end_of_NeoPixel7:	
+  1660                           
+  1661                           	psect	text3
+  1662  0E9E                     __ptext3:	
+  1663 ;; *************** function _NeoPixel6 *****************
+  1664 ;; Defined at:
+  1665 ;;		line 314 in file "UBMPLPF.c"
+  1666 ;; Parameters:    Size  Location     Type
+  1667 ;;  height          1    wreg     unsigned char 
+  1668 ;;  leds            1    0[COMMON] unsigned char 
+  1669 ;; Auto vars:     Size  Location     Type
+  1670 ;;  height          1    3[COMMON] unsigned char 
+  1671 ;; Return value:  Size  Location     Type
+  1672 ;;                  1    wreg      void 
+  1673 ;; Registers used:
+  1674 ;;		wreg, status,2, status,0
+  1675 ;; Tracked objects:
+  1676 ;;		On entry : 0/0
+  1677 ;;		On exit  : 0/0
+  1678 ;;		Unchanged: 0/0
+  1679 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12
+  1680 ;;      Params:         1       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  1681 ;;      Locals:         3       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  1682 ;;      Temps:          2       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  1683 ;;      Totals:         6       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  1684 ;;Total ram usage:        6 bytes
+  1685 ;; Hardware stack levels used:    1
+  1686 ;; This function calls:
+  1687 ;;		Nothing
+  1688 ;; This function is called by:
+  1689 ;;		_lights
+  1690 ;; This function uses a non-reentrant model
+  1691 ;;
+  1692                           
+  1693                           
+  1694                           ;psect for function _NeoPixel6
+  1695  0E9E                     _NeoPixel6:	
+  1696                           
+  1697                           ;incstack = 0
+  1698                           ; Regs used in _NeoPixel6: [wreg+status,2+status,0]
+  1699                           ;NeoPixel6@height stored from wreg
+  1700  0E9E  00F3               	movwf	NeoPixel6@height
+  1701  0E9F                     L1:	
+  1702  0E9F  0870               	movf	NeoPixel6@leds,w
+  1703  0EA0  1903               	btfsc	3,2
+  1704  0EA1  0008               	return
+  1705                           
+  1706                           ;UBMPLPF.c: 316: temp = (leds < height) ? green : 0;
+  1707  0EA2  0873               	movf	NeoPixel6@height,w
+  1708  0EA3  0270               	subwf	NeoPixel6@leds,w
+  1709  0EA4  1C03               	skipc
+  1710  0EA5  2EA9               	goto	l1161
+  1711  0EA6  01F4               	clrf	_NeoPixel6$93
+  1712  0EA7  01F5               	clrf	_NeoPixel6$93+1
+  1713  0EA8  2EB1               	goto	l180
+  1714  0EA9                     l1161:	
+  1715  0EA9  0020               	movlb	0	; select bank0
+  1716  0EAA  0835               	movf	_green,w
+  1717  0EAB  00F1               	movwf	??_NeoPixel6
+  1718  0EAC  01F2               	clrf	??_NeoPixel6+1
+  1719  0EAD  0871               	movf	??_NeoPixel6,w
+  1720  0EAE  00F4               	movwf	_NeoPixel6$93
+  1721  0EAF  0872               	movf	??_NeoPixel6+1,w
+  1722  0EB0  00F5               	movwf	_NeoPixel6$93+1
+  1723  0EB1                     l180:	
+  1724  0EB1  0874               	movf	_NeoPixel6$93,w
+  1725  0EB2  00F1               	movwf	??_NeoPixel6
+  1726  0EB3  0871               	movf	??_NeoPixel6,w
+  1727  0EB4  0020               	movlb	0	; select bank0
+  1728  0EB5  00A0               	movwf	_temp
+  1729                           
+  1730                           ;UBMPLPF.c: 317: for (i = 8; i != 0; i--) {
+  1731  0EB6  3008               	movlw	8
+  1732  0EB7  00F1               	movwf	??_NeoPixel6
+  1733  0EB8  0871               	movf	??_NeoPixel6,w
+  1734  0EB9  00FB               	movwf	_i
+  1735  0EBA  087B               	movf	_i,w
+  1736  0EBB  1903               	btfsc	3,2
+  1737  0EBC  2ECC               	goto	l1169
+  1738  0EBD                     l181:	
+  1739  0EBD  168E               	bsf	270,5	;# 
+  1740  0EBE  0000               	nop	;# 
+  1741  0EBF  0000               	nop	;# 
+  1742  0EC0  1FA0               	btfss	_temp,7	;# 
+  1743  0EC1  128E               	bcf	270,5	;# 
+  1744  0EC2  0000               	nop	;# 
+  1745  0EC3  0000               	nop	;# 
+  1746  0EC4  0000               	nop	;# 
+  1747  0EC5  35A0               	lslf	_temp,f	;# 
+  1748  0EC6  128E               	bcf	270,5	;# 
+  1749  0EC7  3001               	movlw	1
+  1750  0EC8  02FB               	subwf	_i,f
+  1751  0EC9  087B               	movf	_i,w
+  1752  0ECA  1D03               	btfss	3,2
+  1753  0ECB  2EBD               	goto	l181
+  1754  0ECC                     l1169:	
+  1755                           
+  1756                           ;UBMPLPF.c: 328: }
+  1757                           ;UBMPLPF.c: 329: temp = red;
+  1758  0ECC  087D               	movf	_red,w
+  1759  0ECD  00F1               	movwf	??_NeoPixel6
+  1760  0ECE  0871               	movf	??_NeoPixel6,w
+  1761  0ECF  0020               	movlb	0	; select bank0
+  1762  0ED0  00A0               	movwf	_temp
+  1763                           
+  1764                           ;UBMPLPF.c: 330: for (i = 8; i != 0; i--) {
+  1765  0ED1  3008               	movlw	8
+  1766  0ED2  00F1               	movwf	??_NeoPixel6
+  1767  0ED3  0871               	movf	??_NeoPixel6,w
+  1768  0ED4  00FB               	movwf	_i
+  1769  0ED5  087B               	movf	_i,w
+  1770  0ED6  1903               	btfsc	3,2
+  1771  0ED7  2EE7               	goto	l1177
+  1772  0ED8                     l183:	
+  1773  0ED8  168E               	bsf	270,5	;# 
+  1774  0ED9  0000               	nop	;# 
+  1775  0EDA  0000               	nop	;# 
+  1776  0EDB  1FA0               	btfss	_temp,7	;# 
+  1777  0EDC  128E               	bcf	270,5	;# 
+  1778  0EDD  0000               	nop	;# 
+  1779  0EDE  0000               	nop	;# 
+  1780  0EDF  0000               	nop	;# 
+  1781  0EE0  35A0               	lslf	_temp,f	;# 
+  1782  0EE1  128E               	bcf	270,5	;# 
+  1783  0EE2  3001               	movlw	1
+  1784  0EE3  02FB               	subwf	_i,f
+  1785  0EE4  087B               	movf	_i,w
+  1786  0EE5  1D03               	btfss	3,2
+  1787  0EE6  2ED8               	goto	l183
+  1788  0EE7                     l1177:	
+  1789                           
+  1790                           ;UBMPLPF.c: 341: }
+  1791                           ;UBMPLPF.c: 342: temp = blue;
+  1792  0EE7  087C               	movf	_blue,w
+  1793  0EE8  00F1               	movwf	??_NeoPixel6
+  1794  0EE9  0871               	movf	??_NeoPixel6,w
+  1795  0EEA  0020               	movlb	0	; select bank0
+  1796  0EEB  00A0               	movwf	_temp
+  1797                           
+  1798                           ;UBMPLPF.c: 343: for (i = 8; i != 0; i--) {
+  1799  0EEC  3008               	movlw	8
+  1800  0EED  00F1               	movwf	??_NeoPixel6
+  1801  0EEE  0871               	movf	??_NeoPixel6,w
+  1802  0EEF  00FB               	movwf	_i
+  1803  0EF0  087B               	movf	_i,w
+  1804  0EF1  1903               	btfsc	3,2
+  1805  0EF2  2F02               	goto	l1185
+  1806  0EF3                     l185:	
+  1807  0EF3  168E               	bsf	270,5	;# 
+  1808  0EF4  0000               	nop	;# 
+  1809  0EF5  0000               	nop	;# 
+  1810  0EF6  1FA0               	btfss	_temp,7	;# 
+  1811  0EF7  128E               	bcf	270,5	;# 
+  1812  0EF8  0000               	nop	;# 
+  1813  0EF9  0000               	nop	;# 
+  1814  0EFA  0000               	nop	;# 
+  1815  0EFB  35A0               	lslf	_temp,f	;# 
+  1816  0EFC  128E               	bcf	270,5	;# 
+  1817  0EFD  3001               	movlw	1
+  1818  0EFE  02FB               	subwf	_i,f
+  1819  0EFF  087B               	movf	_i,w
+  1820  0F00  1D03               	btfss	3,2
+  1821  0F01  2EF3               	goto	l185
+  1822  0F02                     l1185:	
+  1823  0F02  3001               	movlw	1
+  1824  0F03  02F0               	subwf	NeoPixel6@leds,f
+  1825  0F04  2E9F               	goto	L1
+  1826  0F05                     __end_of_NeoPixel6:	
+  1827                           
+  1828                           	psect	text4
+  1829  0E37                     __ptext4:	
+  1830 ;; *************** function _NeoPixel5 *****************
+  1831 ;; Defined at:
+  1832 ;;		line 266 in file "UBMPLPF.c"
+  1833 ;; Parameters:    Size  Location     Type
+  1834 ;;  height          1    wreg     unsigned char 
+  1835 ;;  leds            1    0[COMMON] unsigned char 
+  1836 ;; Auto vars:     Size  Location     Type
+  1837 ;;  height          1    3[COMMON] unsigned char 
+  1838 ;; Return value:  Size  Location     Type
+  1839 ;;                  1    wreg      void 
+  1840 ;; Registers used:
+  1841 ;;		wreg, status,2, status,0
+  1842 ;; Tracked objects:
+  1843 ;;		On entry : 0/0
+  1844 ;;		On exit  : 0/0
+  1845 ;;		Unchanged: 0/0
+  1846 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12
+  1847 ;;      Params:         1       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  1848 ;;      Locals:         3       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  1849 ;;      Temps:          2       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  1850 ;;      Totals:         6       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  1851 ;;Total ram usage:        6 bytes
+  1852 ;; Hardware stack levels used:    1
+  1853 ;; This function calls:
+  1854 ;;		Nothing
+  1855 ;; This function is called by:
+  1856 ;;		_lights
+  1857 ;; This function uses a non-reentrant model
+  1858 ;;
+  1859                           
+  1860                           
+  1861                           ;psect for function _NeoPixel5
+  1862  0E37                     _NeoPixel5:	
+  1863                           
+  1864                           ;incstack = 0
+  1865                           ; Regs used in _NeoPixel5: [wreg+status,2+status,0]
+  1866                           ;NeoPixel5@height stored from wreg
+  1867  0E37  00F3               	movwf	NeoPixel5@height
+  1868  0E38                     L2:	
+  1869  0E38  0870               	movf	NeoPixel5@leds,w
+  1870  0E39  1903               	btfsc	3,2
+  1871  0E3A  0008               	return
+  1872                           
+  1873                           ;UBMPLPF.c: 268: temp = (leds < height) ? green : 0;
+  1874  0E3B  0873               	movf	NeoPixel5@height,w
+  1875  0E3C  0270               	subwf	NeoPixel5@leds,w
+  1876  0E3D  1C03               	skipc
+  1877  0E3E  2E42               	goto	l1127
+  1878  0E3F  01F4               	clrf	_NeoPixel5$89
+  1879  0E40  01F5               	clrf	_NeoPixel5$89+1
+  1880  0E41  2E4A               	goto	l165
+  1881  0E42                     l1127:	
+  1882  0E42  0020               	movlb	0	; select bank0
+  1883  0E43  0835               	movf	_green,w
+  1884  0E44  00F1               	movwf	??_NeoPixel5
+  1885  0E45  01F2               	clrf	??_NeoPixel5+1
+  1886  0E46  0871               	movf	??_NeoPixel5,w
+  1887  0E47  00F4               	movwf	_NeoPixel5$89
+  1888  0E48  0872               	movf	??_NeoPixel5+1,w
+  1889  0E49  00F5               	movwf	_NeoPixel5$89+1
+  1890  0E4A                     l165:	
+  1891  0E4A  0874               	movf	_NeoPixel5$89,w
+  1892  0E4B  00F1               	movwf	??_NeoPixel5
+  1893  0E4C  0871               	movf	??_NeoPixel5,w
+  1894  0E4D  0020               	movlb	0	; select bank0
+  1895  0E4E  00A0               	movwf	_temp
+  1896                           
+  1897                           ;UBMPLPF.c: 269: for (i = 8; i != 0; i--) {
+  1898  0E4F  3008               	movlw	8
+  1899  0E50  00F1               	movwf	??_NeoPixel5
+  1900  0E51  0871               	movf	??_NeoPixel5,w
+  1901  0E52  00FB               	movwf	_i
+  1902  0E53  087B               	movf	_i,w
+  1903  0E54  1903               	btfsc	3,2
+  1904  0E55  2E65               	goto	l1135
+  1905  0E56                     l166:	
+  1906  0E56  160E               	bsf	270,4	;# 
+  1907  0E57  0000               	nop	;# 
+  1908  0E58  0000               	nop	;# 
+  1909  0E59  1FA0               	btfss	_temp,7	;# 
+  1910  0E5A  120E               	bcf	270,4	;# 
+  1911  0E5B  0000               	nop	;# 
+  1912  0E5C  0000               	nop	;# 
+  1913  0E5D  0000               	nop	;# 
+  1914  0E5E  35A0               	lslf	_temp,f	;# 
+  1915  0E5F  120E               	bcf	270,4	;# 
+  1916  0E60  3001               	movlw	1
+  1917  0E61  02FB               	subwf	_i,f
+  1918  0E62  087B               	movf	_i,w
+  1919  0E63  1D03               	btfss	3,2
+  1920  0E64  2E56               	goto	l166
+  1921  0E65                     l1135:	
+  1922                           
+  1923                           ;UBMPLPF.c: 280: }
+  1924                           ;UBMPLPF.c: 281: temp = red;
+  1925  0E65  087D               	movf	_red,w
+  1926  0E66  00F1               	movwf	??_NeoPixel5
+  1927  0E67  0871               	movf	??_NeoPixel5,w
+  1928  0E68  0020               	movlb	0	; select bank0
+  1929  0E69  00A0               	movwf	_temp
+  1930                           
+  1931                           ;UBMPLPF.c: 282: for (i = 8; i != 0; i--) {
+  1932  0E6A  3008               	movlw	8
+  1933  0E6B  00F1               	movwf	??_NeoPixel5
+  1934  0E6C  0871               	movf	??_NeoPixel5,w
+  1935  0E6D  00FB               	movwf	_i
+  1936  0E6E  087B               	movf	_i,w
+  1937  0E6F  1903               	btfsc	3,2
+  1938  0E70  2E80               	goto	l1143
+  1939  0E71                     l168:	
+  1940  0E71  160E               	bsf	270,4	;# 
+  1941  0E72  0000               	nop	;# 
+  1942  0E73  0000               	nop	;# 
+  1943  0E74  1FA0               	btfss	_temp,7	;# 
+  1944  0E75  120E               	bcf	270,4	;# 
+  1945  0E76  0000               	nop	;# 
+  1946  0E77  0000               	nop	;# 
+  1947  0E78  0000               	nop	;# 
+  1948  0E79  35A0               	lslf	_temp,f	;# 
+  1949  0E7A  120E               	bcf	270,4	;# 
+  1950  0E7B  3001               	movlw	1
+  1951  0E7C  02FB               	subwf	_i,f
+  1952  0E7D  087B               	movf	_i,w
+  1953  0E7E  1D03               	btfss	3,2
+  1954  0E7F  2E71               	goto	l168
+  1955  0E80                     l1143:	
+  1956                           
+  1957                           ;UBMPLPF.c: 293: }
+  1958                           ;UBMPLPF.c: 294: temp = blue;
+  1959  0E80  087C               	movf	_blue,w
+  1960  0E81  00F1               	movwf	??_NeoPixel5
+  1961  0E82  0871               	movf	??_NeoPixel5,w
+  1962  0E83  0020               	movlb	0	; select bank0
+  1963  0E84  00A0               	movwf	_temp
+  1964                           
+  1965                           ;UBMPLPF.c: 295: for (i = 8; i != 0; i--) {
+  1966  0E85  3008               	movlw	8
+  1967  0E86  00F1               	movwf	??_NeoPixel5
+  1968  0E87  0871               	movf	??_NeoPixel5,w
+  1969  0E88  00FB               	movwf	_i
+  1970  0E89  087B               	movf	_i,w
+  1971  0E8A  1903               	btfsc	3,2
+  1972  0E8B  2E9B               	goto	l1151
+  1973  0E8C                     l170:	
+  1974  0E8C  160E               	bsf	270,4	;# 
+  1975  0E8D  0000               	nop	;# 
+  1976  0E8E  0000               	nop	;# 
+  1977  0E8F  1FA0               	btfss	_temp,7	;# 
+  1978  0E90  120E               	bcf	270,4	;# 
+  1979  0E91  0000               	nop	;# 
+  1980  0E92  0000               	nop	;# 
+  1981  0E93  0000               	nop	;# 
+  1982  0E94  35A0               	lslf	_temp,f	;# 
+  1983  0E95  120E               	bcf	270,4	;# 
+  1984  0E96  3001               	movlw	1
+  1985  0E97  02FB               	subwf	_i,f
+  1986  0E98  087B               	movf	_i,w
+  1987  0E99  1D03               	btfss	3,2
+  1988  0E9A  2E8C               	goto	l170
+  1989  0E9B                     l1151:	
+  1990  0E9B  3001               	movlw	1
+  1991  0E9C  02F0               	subwf	NeoPixel5@leds,f
+  1992  0E9D  2E38               	goto	L2
+  1993  0E9E                     __end_of_NeoPixel5:	
+  1994                           
+  1995                           	psect	text5
+  1996  0DD0                     __ptext5:	
+  1997 ;; *************** function _NeoPixel4 *****************
+  1998 ;; Defined at:
+  1999 ;;		line 218 in file "UBMPLPF.c"
+  2000 ;; Parameters:    Size  Location     Type
+  2001 ;;  height          1    wreg     unsigned char 
+  2002 ;;  leds            1    0[COMMON] unsigned char 
+  2003 ;; Auto vars:     Size  Location     Type
+  2004 ;;  height          1    3[COMMON] unsigned char 
+  2005 ;; Return value:  Size  Location     Type
+  2006 ;;                  1    wreg      void 
+  2007 ;; Registers used:
+  2008 ;;		wreg, status,2, status,0
+  2009 ;; Tracked objects:
+  2010 ;;		On entry : 0/0
+  2011 ;;		On exit  : 0/0
+  2012 ;;		Unchanged: 0/0
+  2013 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12
+  2014 ;;      Params:         1       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  2015 ;;      Locals:         3       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  2016 ;;      Temps:          2       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  2017 ;;      Totals:         6       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  2018 ;;Total ram usage:        6 bytes
+  2019 ;; Hardware stack levels used:    1
+  2020 ;; This function calls:
+  2021 ;;		Nothing
+  2022 ;; This function is called by:
+  2023 ;;		_lights
+  2024 ;; This function uses a non-reentrant model
+  2025 ;;
+  2026                           
+  2027                           
+  2028                           ;psect for function _NeoPixel4
+  2029  0DD0                     _NeoPixel4:	
+  2030                           
+  2031                           ;incstack = 0
+  2032                           ; Regs used in _NeoPixel4: [wreg+status,2+status,0]
+  2033                           ;NeoPixel4@height stored from wreg
+  2034  0DD0  00F3               	movwf	NeoPixel4@height
+  2035  0DD1                     L3:	
+  2036  0DD1  0870               	movf	NeoPixel4@leds,w
+  2037  0DD2  1903               	btfsc	3,2
+  2038  0DD3  0008               	return
+  2039                           
+  2040                           ;UBMPLPF.c: 220: temp = (leds < height) ? green : 0;
+  2041  0DD4  0873               	movf	NeoPixel4@height,w
+  2042  0DD5  0270               	subwf	NeoPixel4@leds,w
+  2043  0DD6  1C03               	skipc
+  2044  0DD7  2DDB               	goto	l1093
+  2045  0DD8  01F4               	clrf	_NeoPixel4$85
+  2046  0DD9  01F5               	clrf	_NeoPixel4$85+1
+  2047  0DDA  2DE3               	goto	l150
+  2048  0DDB                     l1093:	
+  2049  0DDB  0020               	movlb	0	; select bank0
+  2050  0DDC  0835               	movf	_green,w
+  2051  0DDD  00F1               	movwf	??_NeoPixel4
+  2052  0DDE  01F2               	clrf	??_NeoPixel4+1
+  2053  0DDF  0871               	movf	??_NeoPixel4,w
+  2054  0DE0  00F4               	movwf	_NeoPixel4$85
+  2055  0DE1  0872               	movf	??_NeoPixel4+1,w
+  2056  0DE2  00F5               	movwf	_NeoPixel4$85+1
+  2057  0DE3                     l150:	
+  2058  0DE3  0874               	movf	_NeoPixel4$85,w
+  2059  0DE4  00F1               	movwf	??_NeoPixel4
+  2060  0DE5  0871               	movf	??_NeoPixel4,w
+  2061  0DE6  0020               	movlb	0	; select bank0
+  2062  0DE7  00A0               	movwf	_temp
+  2063                           
+  2064                           ;UBMPLPF.c: 221: for (i = 8; i != 0; i--) {
+  2065  0DE8  3008               	movlw	8
+  2066  0DE9  00F1               	movwf	??_NeoPixel4
+  2067  0DEA  0871               	movf	??_NeoPixel4,w
+  2068  0DEB  00FB               	movwf	_i
+  2069  0DEC  087B               	movf	_i,w
+  2070  0DED  1903               	btfsc	3,2
+  2071  0DEE  2DFE               	goto	l1101
+  2072  0DEF                     l151:	
+  2073  0DEF  158E               	bsf	270,3	;# 
+  2074  0DF0  0000               	nop	;# 
+  2075  0DF1  0000               	nop	;# 
+  2076  0DF2  1FA0               	btfss	_temp,7	;# 
+  2077  0DF3  118E               	bcf	270,3	;# 
+  2078  0DF4  0000               	nop	;# 
+  2079  0DF5  0000               	nop	;# 
+  2080  0DF6  0000               	nop	;# 
+  2081  0DF7  35A0               	lslf	_temp,f	;# 
+  2082  0DF8  118E               	bcf	270,3	;# 
+  2083  0DF9  3001               	movlw	1
+  2084  0DFA  02FB               	subwf	_i,f
+  2085  0DFB  087B               	movf	_i,w
+  2086  0DFC  1D03               	btfss	3,2
+  2087  0DFD  2DEF               	goto	l151
+  2088  0DFE                     l1101:	
+  2089                           
+  2090                           ;UBMPLPF.c: 232: }
+  2091                           ;UBMPLPF.c: 233: temp = red;
+  2092  0DFE  087D               	movf	_red,w
+  2093  0DFF  00F1               	movwf	??_NeoPixel4
+  2094  0E00  0871               	movf	??_NeoPixel4,w
+  2095  0E01  0020               	movlb	0	; select bank0
+  2096  0E02  00A0               	movwf	_temp
+  2097                           
+  2098                           ;UBMPLPF.c: 234: for (i = 8; i != 0; i--) {
+  2099  0E03  3008               	movlw	8
+  2100  0E04  00F1               	movwf	??_NeoPixel4
+  2101  0E05  0871               	movf	??_NeoPixel4,w
+  2102  0E06  00FB               	movwf	_i
+  2103  0E07  087B               	movf	_i,w
+  2104  0E08  1903               	btfsc	3,2
+  2105  0E09  2E19               	goto	l1109
+  2106  0E0A                     l153:	
+  2107  0E0A  158E               	bsf	270,3	;# 
+  2108  0E0B  0000               	nop	;# 
+  2109  0E0C  0000               	nop	;# 
+  2110  0E0D  1FA0               	btfss	_temp,7	;# 
+  2111  0E0E  118E               	bcf	270,3	;# 
+  2112  0E0F  0000               	nop	;# 
+  2113  0E10  0000               	nop	;# 
+  2114  0E11  0000               	nop	;# 
+  2115  0E12  35A0               	lslf	_temp,f	;# 
+  2116  0E13  118E               	bcf	270,3	;# 
+  2117  0E14  3001               	movlw	1
+  2118  0E15  02FB               	subwf	_i,f
+  2119  0E16  087B               	movf	_i,w
+  2120  0E17  1D03               	btfss	3,2
+  2121  0E18  2E0A               	goto	l153
+  2122  0E19                     l1109:	
+  2123                           
+  2124                           ;UBMPLPF.c: 245: }
+  2125                           ;UBMPLPF.c: 246: temp = blue;
+  2126  0E19  087C               	movf	_blue,w
+  2127  0E1A  00F1               	movwf	??_NeoPixel4
+  2128  0E1B  0871               	movf	??_NeoPixel4,w
+  2129  0E1C  0020               	movlb	0	; select bank0
+  2130  0E1D  00A0               	movwf	_temp
+  2131                           
+  2132                           ;UBMPLPF.c: 247: for (i = 8; i != 0; i--) {
+  2133  0E1E  3008               	movlw	8
+  2134  0E1F  00F1               	movwf	??_NeoPixel4
+  2135  0E20  0871               	movf	??_NeoPixel4,w
+  2136  0E21  00FB               	movwf	_i
+  2137  0E22  087B               	movf	_i,w
+  2138  0E23  1903               	btfsc	3,2
+  2139  0E24  2E34               	goto	l1117
+  2140  0E25                     l155:	
+  2141  0E25  158E               	bsf	270,3	;# 
+  2142  0E26  0000               	nop	;# 
+  2143  0E27  0000               	nop	;# 
+  2144  0E28  1FA0               	btfss	_temp,7	;# 
+  2145  0E29  118E               	bcf	270,3	;# 
+  2146  0E2A  0000               	nop	;# 
+  2147  0E2B  0000               	nop	;# 
+  2148  0E2C  0000               	nop	;# 
+  2149  0E2D  35A0               	lslf	_temp,f	;# 
+  2150  0E2E  118E               	bcf	270,3	;# 
+  2151  0E2F  3001               	movlw	1
+  2152  0E30  02FB               	subwf	_i,f
+  2153  0E31  087B               	movf	_i,w
+  2154  0E32  1D03               	btfss	3,2
+  2155  0E33  2E25               	goto	l155
+  2156  0E34                     l1117:	
+  2157  0E34  3001               	movlw	1
+  2158  0E35  02F0               	subwf	NeoPixel4@leds,f
+  2159  0E36  2DD1               	goto	L3
+  2160  0E37                     __end_of_NeoPixel4:	
+  2161                           
+  2162                           	psect	text6
+  2163  0D69                     __ptext6:	
+  2164 ;; *************** function _NeoPixel3 *****************
+  2165 ;; Defined at:
+  2166 ;;		line 170 in file "UBMPLPF.c"
+  2167 ;; Parameters:    Size  Location     Type
+  2168 ;;  height          1    wreg     unsigned char 
+  2169 ;;  leds            1    0[COMMON] unsigned char 
+  2170 ;; Auto vars:     Size  Location     Type
+  2171 ;;  height          1    3[COMMON] unsigned char 
+  2172 ;; Return value:  Size  Location     Type
+  2173 ;;                  1    wreg      void 
+  2174 ;; Registers used:
+  2175 ;;		wreg, status,2, status,0
+  2176 ;; Tracked objects:
+  2177 ;;		On entry : 0/0
+  2178 ;;		On exit  : 0/0
+  2179 ;;		Unchanged: 0/0
+  2180 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12
+  2181 ;;      Params:         1       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  2182 ;;      Locals:         3       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  2183 ;;      Temps:          2       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  2184 ;;      Totals:         6       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  2185 ;;Total ram usage:        6 bytes
+  2186 ;; Hardware stack levels used:    1
+  2187 ;; This function calls:
+  2188 ;;		Nothing
+  2189 ;; This function is called by:
+  2190 ;;		_lights
+  2191 ;; This function uses a non-reentrant model
+  2192 ;;
+  2193                           
+  2194                           
+  2195                           ;psect for function _NeoPixel3
+  2196  0D69                     _NeoPixel3:	
+  2197                           
+  2198                           ;incstack = 0
+  2199                           ; Regs used in _NeoPixel3: [wreg+status,2+status,0]
+  2200                           ;NeoPixel3@height stored from wreg
+  2201  0D69  00F3               	movwf	NeoPixel3@height
+  2202  0D6A                     L4:	
+  2203  0D6A  0870               	movf	NeoPixel3@leds,w
+  2204  0D6B  1903               	btfsc	3,2
+  2205  0D6C  0008               	return
+  2206                           
+  2207                           ;UBMPLPF.c: 172: temp = (leds < height) ? green : 0;
+  2208  0D6D  0873               	movf	NeoPixel3@height,w
+  2209  0D6E  0270               	subwf	NeoPixel3@leds,w
+  2210  0D6F  1C03               	skipc
+  2211  0D70  2D74               	goto	l1059
+  2212  0D71  01F4               	clrf	_NeoPixel3$81
+  2213  0D72  01F5               	clrf	_NeoPixel3$81+1
+  2214  0D73  2D7C               	goto	l135
+  2215  0D74                     l1059:	
+  2216  0D74  0020               	movlb	0	; select bank0
+  2217  0D75  0835               	movf	_green,w
+  2218  0D76  00F1               	movwf	??_NeoPixel3
+  2219  0D77  01F2               	clrf	??_NeoPixel3+1
+  2220  0D78  0871               	movf	??_NeoPixel3,w
+  2221  0D79  00F4               	movwf	_NeoPixel3$81
+  2222  0D7A  0872               	movf	??_NeoPixel3+1,w
+  2223  0D7B  00F5               	movwf	_NeoPixel3$81+1
+  2224  0D7C                     l135:	
+  2225  0D7C  0874               	movf	_NeoPixel3$81,w
+  2226  0D7D  00F1               	movwf	??_NeoPixel3
+  2227  0D7E  0871               	movf	??_NeoPixel3,w
+  2228  0D7F  0020               	movlb	0	; select bank0
+  2229  0D80  00A0               	movwf	_temp
+  2230                           
+  2231                           ;UBMPLPF.c: 173: for (i = 8; i != 0; i--) {
+  2232  0D81  3008               	movlw	8
+  2233  0D82  00F1               	movwf	??_NeoPixel3
+  2234  0D83  0871               	movf	??_NeoPixel3,w
+  2235  0D84  00FB               	movwf	_i
+  2236  0D85  087B               	movf	_i,w
+  2237  0D86  1903               	btfsc	3,2
+  2238  0D87  2D97               	goto	l1067
+  2239  0D88                     l136:	
+  2240  0D88  140E               	bsf	270,0	;# 
+  2241  0D89  0000               	nop	;# 
+  2242  0D8A  0000               	nop	;# 
+  2243  0D8B  1FA0               	btfss	_temp,7	;# 
+  2244  0D8C  100E               	bcf	270,0	;# 
+  2245  0D8D  0000               	nop	;# 
+  2246  0D8E  0000               	nop	;# 
+  2247  0D8F  0000               	nop	;# 
+  2248  0D90  35A0               	lslf	_temp,f	;# 
+  2249  0D91  100E               	bcf	270,0	;# 
+  2250  0D92  3001               	movlw	1
+  2251  0D93  02FB               	subwf	_i,f
+  2252  0D94  087B               	movf	_i,w
+  2253  0D95  1D03               	btfss	3,2
+  2254  0D96  2D88               	goto	l136
+  2255  0D97                     l1067:	
+  2256                           
+  2257                           ;UBMPLPF.c: 184: }
+  2258                           ;UBMPLPF.c: 185: temp = red;
+  2259  0D97  087D               	movf	_red,w
+  2260  0D98  00F1               	movwf	??_NeoPixel3
+  2261  0D99  0871               	movf	??_NeoPixel3,w
+  2262  0D9A  0020               	movlb	0	; select bank0
+  2263  0D9B  00A0               	movwf	_temp
+  2264                           
+  2265                           ;UBMPLPF.c: 186: for (i = 8; i != 0; i--) {
+  2266  0D9C  3008               	movlw	8
+  2267  0D9D  00F1               	movwf	??_NeoPixel3
+  2268  0D9E  0871               	movf	??_NeoPixel3,w
+  2269  0D9F  00FB               	movwf	_i
+  2270  0DA0  087B               	movf	_i,w
+  2271  0DA1  1903               	btfsc	3,2
+  2272  0DA2  2DB2               	goto	l1075
+  2273  0DA3                     l138:	
+  2274  0DA3  160C               	bsf	268,4	;# 
+  2275  0DA4  0000               	nop	;# 
+  2276  0DA5  0000               	nop	;# 
+  2277  0DA6  1FA0               	btfss	_temp,7	;# 
+  2278  0DA7  100E               	bcf	270,0	;# 
+  2279  0DA8  0000               	nop	;# 
+  2280  0DA9  0000               	nop	;# 
+  2281  0DAA  0000               	nop	;# 
+  2282  0DAB  35A0               	lslf	_temp,f	;# 
+  2283  0DAC  100E               	bcf	270,0	;# 
+  2284  0DAD  3001               	movlw	1
+  2285  0DAE  02FB               	subwf	_i,f
+  2286  0DAF  087B               	movf	_i,w
+  2287  0DB0  1D03               	btfss	3,2
+  2288  0DB1  2DA3               	goto	l138
+  2289  0DB2                     l1075:	
+  2290                           
+  2291                           ;UBMPLPF.c: 197: }
+  2292                           ;UBMPLPF.c: 198: temp = blue;
+  2293  0DB2  087C               	movf	_blue,w
+  2294  0DB3  00F1               	movwf	??_NeoPixel3
+  2295  0DB4  0871               	movf	??_NeoPixel3,w
+  2296  0DB5  0020               	movlb	0	; select bank0
+  2297  0DB6  00A0               	movwf	_temp
+  2298                           
+  2299                           ;UBMPLPF.c: 199: for (i = 8; i != 0; i--) {
+  2300  0DB7  3008               	movlw	8
+  2301  0DB8  00F1               	movwf	??_NeoPixel3
+  2302  0DB9  0871               	movf	??_NeoPixel3,w
+  2303  0DBA  00FB               	movwf	_i
+  2304  0DBB  087B               	movf	_i,w
+  2305  0DBC  1903               	btfsc	3,2
+  2306  0DBD  2DCD               	goto	l1083
+  2307  0DBE                     l140:	
+  2308  0DBE  140E               	bsf	270,0	;# 
+  2309  0DBF  0000               	nop	;# 
+  2310  0DC0  0000               	nop	;# 
+  2311  0DC1  1FA0               	btfss	_temp,7	;# 
+  2312  0DC2  100E               	bcf	270,0	;# 
+  2313  0DC3  0000               	nop	;# 
+  2314  0DC4  0000               	nop	;# 
+  2315  0DC5  0000               	nop	;# 
+  2316  0DC6  35A0               	lslf	_temp,f	;# 
+  2317  0DC7  100E               	bcf	270,0	;# 
+  2318  0DC8  3001               	movlw	1
+  2319  0DC9  02FB               	subwf	_i,f
+  2320  0DCA  087B               	movf	_i,w
+  2321  0DCB  1D03               	btfss	3,2
+  2322  0DCC  2DBE               	goto	l140
+  2323  0DCD                     l1083:	
+  2324  0DCD  3001               	movlw	1
+  2325  0DCE  02F0               	subwf	NeoPixel3@leds,f
+  2326  0DCF  2D6A               	goto	L4
+  2327  0DD0                     __end_of_NeoPixel3:	
+  2328                           
+  2329                           	psect	text7
+  2330  0D02                     __ptext7:	
+  2331 ;; *************** function _NeoPixel2 *****************
+  2332 ;; Defined at:
+  2333 ;;		line 121 in file "UBMPLPF.c"
+  2334 ;; Parameters:    Size  Location     Type
+  2335 ;;  height          1    wreg     unsigned char 
+  2336 ;;  leds            1    0[COMMON] unsigned char 
+  2337 ;; Auto vars:     Size  Location     Type
+  2338 ;;  height          1    3[COMMON] unsigned char 
+  2339 ;; Return value:  Size  Location     Type
+  2340 ;;                  1    wreg      void 
+  2341 ;; Registers used:
+  2342 ;;		wreg, status,2, status,0
+  2343 ;; Tracked objects:
+  2344 ;;		On entry : 0/0
+  2345 ;;		On exit  : 0/0
+  2346 ;;		Unchanged: 0/0
+  2347 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12
+  2348 ;;      Params:         1       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  2349 ;;      Locals:         3       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  2350 ;;      Temps:          2       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  2351 ;;      Totals:         6       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  2352 ;;Total ram usage:        6 bytes
+  2353 ;; Hardware stack levels used:    1
+  2354 ;; This function calls:
+  2355 ;;		Nothing
+  2356 ;; This function is called by:
+  2357 ;;		_lights
+  2358 ;; This function uses a non-reentrant model
+  2359 ;;
+  2360                           
+  2361                           
+  2362                           ;psect for function _NeoPixel2
+  2363  0D02                     _NeoPixel2:	
+  2364                           
+  2365                           ;incstack = 0
+  2366                           ; Regs used in _NeoPixel2: [wreg+status,2+status,0]
+  2367                           ;NeoPixel2@height stored from wreg
+  2368  0D02  00F3               	movwf	NeoPixel2@height
+  2369  0D03                     L5:	
+  2370  0D03  0870               	movf	NeoPixel2@leds,w
+  2371  0D04  1903               	btfsc	3,2
+  2372  0D05  0008               	return
+  2373                           
+  2374                           ;UBMPLPF.c: 123: temp = (leds < height) ? green : 0;
+  2375  0D06  0873               	movf	NeoPixel2@height,w
+  2376  0D07  0270               	subwf	NeoPixel2@leds,w
+  2377  0D08  1C03               	skipc
+  2378  0D09  2D0D               	goto	l1025
+  2379  0D0A  01F4               	clrf	_NeoPixel2$77
+  2380  0D0B  01F5               	clrf	_NeoPixel2$77+1
+  2381  0D0C  2D15               	goto	l120
+  2382  0D0D                     l1025:	
+  2383  0D0D  0020               	movlb	0	; select bank0
+  2384  0D0E  0835               	movf	_green,w
+  2385  0D0F  00F1               	movwf	??_NeoPixel2
+  2386  0D10  01F2               	clrf	??_NeoPixel2+1
+  2387  0D11  0871               	movf	??_NeoPixel2,w
+  2388  0D12  00F4               	movwf	_NeoPixel2$77
+  2389  0D13  0872               	movf	??_NeoPixel2+1,w
+  2390  0D14  00F5               	movwf	_NeoPixel2$77+1
+  2391  0D15                     l120:	
+  2392  0D15  0874               	movf	_NeoPixel2$77,w
+  2393  0D16  00F1               	movwf	??_NeoPixel2
+  2394  0D17  0871               	movf	??_NeoPixel2,w
+  2395  0D18  0020               	movlb	0	; select bank0
+  2396  0D19  00A0               	movwf	_temp
+  2397                           
+  2398                           ;UBMPLPF.c: 124: for (i = 8; i != 0; i--) {
+  2399  0D1A  3008               	movlw	8
+  2400  0D1B  00F1               	movwf	??_NeoPixel2
+  2401  0D1C  0871               	movf	??_NeoPixel2,w
+  2402  0D1D  00FB               	movwf	_i
+  2403  0D1E  087B               	movf	_i,w
+  2404  0D1F  1903               	btfsc	3,2
+  2405  0D20  2D30               	goto	l1033
+  2406  0D21                     l121:	
+  2407  0D21  148E               	bsf	270,1	;# 
+  2408  0D22  0000               	nop	;# 
+  2409  0D23  0000               	nop	;# 
+  2410  0D24  1FA0               	btfss	_temp,7	;# 
+  2411  0D25  108E               	bcf	270,1	;# 
+  2412  0D26  0000               	nop	;# 
+  2413  0D27  0000               	nop	;# 
+  2414  0D28  0000               	nop	;# 
+  2415  0D29  35A0               	lslf	_temp,f	;# 
+  2416  0D2A  108E               	bcf	270,1	;# 
+  2417  0D2B  3001               	movlw	1
+  2418  0D2C  02FB               	subwf	_i,f
+  2419  0D2D  087B               	movf	_i,w
+  2420  0D2E  1D03               	btfss	3,2
+  2421  0D2F  2D21               	goto	l121
+  2422  0D30                     l1033:	
+  2423                           
+  2424                           ;UBMPLPF.c: 135: }
+  2425                           ;UBMPLPF.c: 136: temp = red;
+  2426  0D30  087D               	movf	_red,w
+  2427  0D31  00F1               	movwf	??_NeoPixel2
+  2428  0D32  0871               	movf	??_NeoPixel2,w
+  2429  0D33  0020               	movlb	0	; select bank0
+  2430  0D34  00A0               	movwf	_temp
+  2431                           
+  2432                           ;UBMPLPF.c: 137: for (i = 8; i != 0; i--) {
+  2433  0D35  3008               	movlw	8
+  2434  0D36  00F1               	movwf	??_NeoPixel2
+  2435  0D37  0871               	movf	??_NeoPixel2,w
+  2436  0D38  00FB               	movwf	_i
+  2437  0D39  087B               	movf	_i,w
+  2438  0D3A  1903               	btfsc	3,2
+  2439  0D3B  2D4B               	goto	l1041
+  2440  0D3C                     l123:	
+  2441  0D3C  148E               	bsf	270,1	;# 
+  2442  0D3D  0000               	nop	;# 
+  2443  0D3E  0000               	nop	;# 
+  2444  0D3F  1FA0               	btfss	_temp,7	;# 
+  2445  0D40  108E               	bcf	270,1	;# 
+  2446  0D41  0000               	nop	;# 
+  2447  0D42  0000               	nop	;# 
+  2448  0D43  0000               	nop	;# 
+  2449  0D44  35A0               	lslf	_temp,f	;# 
+  2450  0D45  108E               	bcf	270,1	;# 
+  2451  0D46  3001               	movlw	1
+  2452  0D47  02FB               	subwf	_i,f
+  2453  0D48  087B               	movf	_i,w
+  2454  0D49  1D03               	btfss	3,2
+  2455  0D4A  2D3C               	goto	l123
+  2456  0D4B                     l1041:	
+  2457                           
+  2458                           ;UBMPLPF.c: 148: }
+  2459                           ;UBMPLPF.c: 149: temp = blue;
+  2460  0D4B  087C               	movf	_blue,w
+  2461  0D4C  00F1               	movwf	??_NeoPixel2
+  2462  0D4D  0871               	movf	??_NeoPixel2,w
+  2463  0D4E  0020               	movlb	0	; select bank0
+  2464  0D4F  00A0               	movwf	_temp
+  2465                           
+  2466                           ;UBMPLPF.c: 150: for (i = 8; i != 0; i--) {
+  2467  0D50  3008               	movlw	8
+  2468  0D51  00F1               	movwf	??_NeoPixel2
+  2469  0D52  0871               	movf	??_NeoPixel2,w
+  2470  0D53  00FB               	movwf	_i
+  2471  0D54  087B               	movf	_i,w
+  2472  0D55  1903               	btfsc	3,2
+  2473  0D56  2D66               	goto	l1049
+  2474  0D57                     l125:	
+  2475  0D57  148E               	bsf	270,1	;# 
+  2476  0D58  0000               	nop	;# 
+  2477  0D59  0000               	nop	;# 
+  2478  0D5A  1FA0               	btfss	_temp,7	;# 
+  2479  0D5B  108E               	bcf	270,1	;# 
+  2480  0D5C  0000               	nop	;# 
+  2481  0D5D  0000               	nop	;# 
+  2482  0D5E  0000               	nop	;# 
+  2483  0D5F  35A0               	lslf	_temp,f	;# 
+  2484  0D60  108E               	bcf	270,1	;# 
+  2485  0D61  3001               	movlw	1
+  2486  0D62  02FB               	subwf	_i,f
+  2487  0D63  087B               	movf	_i,w
+  2488  0D64  1D03               	btfss	3,2
+  2489  0D65  2D57               	goto	l125
+  2490  0D66                     l1049:	
+  2491  0D66  3001               	movlw	1
+  2492  0D67  02F0               	subwf	NeoPixel2@leds,f
+  2493  0D68  2D03               	goto	L5
+  2494  0D69                     __end_of_NeoPixel2:	
+  2495                           
+  2496                           	psect	text8
+  2497  0C9B                     __ptext8:	
+  2498 ;; *************** function _NeoPixel1 *****************
+  2499 ;; Defined at:
+  2500 ;;		line 73 in file "UBMPLPF.c"
+  2501 ;; Parameters:    Size  Location     Type
+  2502 ;;  height          1    wreg     unsigned char 
+  2503 ;;  leds            1    0[COMMON] unsigned char 
+  2504 ;; Auto vars:     Size  Location     Type
+  2505 ;;  height          1    3[COMMON] unsigned char 
+  2506 ;; Return value:  Size  Location     Type
+  2507 ;;                  1    wreg      void 
+  2508 ;; Registers used:
+  2509 ;;		wreg, status,2, status,0
+  2510 ;; Tracked objects:
+  2511 ;;		On entry : 0/0
+  2512 ;;		On exit  : 0/0
+  2513 ;;		Unchanged: 0/0
+  2514 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12
+  2515 ;;      Params:         1       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  2516 ;;      Locals:         3       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  2517 ;;      Temps:          2       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  2518 ;;      Totals:         6       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  2519 ;;Total ram usage:        6 bytes
+  2520 ;; Hardware stack levels used:    1
+  2521 ;; This function calls:
+  2522 ;;		Nothing
+  2523 ;; This function is called by:
+  2524 ;;		_lights
+  2525 ;; This function uses a non-reentrant model
+  2526 ;;
+  2527                           
+  2528                           
+  2529                           ;psect for function _NeoPixel1
+  2530  0C9B                     _NeoPixel1:	
+  2531                           
+  2532                           ;incstack = 0
+  2533                           ; Regs used in _NeoPixel1: [wreg+status,2+status,0]
+  2534                           ;NeoPixel1@height stored from wreg
+  2535  0C9B  00F3               	movwf	NeoPixel1@height
+  2536  0C9C                     L6:	
+  2537  0C9C  0870               	movf	NeoPixel1@leds,w
+  2538  0C9D  1903               	btfsc	3,2
+  2539  0C9E  0008               	return
+  2540                           
+  2541                           ;UBMPLPF.c: 75: temp = (leds < height) ? green : 0;
+  2542  0C9F  0873               	movf	NeoPixel1@height,w
+  2543  0CA0  0270               	subwf	NeoPixel1@leds,w
+  2544  0CA1  1C03               	skipc
+  2545  0CA2  2CA6               	goto	l991
+  2546  0CA3  01F4               	clrf	_NeoPixel1$73
+  2547  0CA4  01F5               	clrf	_NeoPixel1$73+1
+  2548  0CA5  2CAE               	goto	l105
+  2549  0CA6                     l991:	
+  2550  0CA6  0020               	movlb	0	; select bank0
+  2551  0CA7  0835               	movf	_green,w
+  2552  0CA8  00F1               	movwf	??_NeoPixel1
+  2553  0CA9  01F2               	clrf	??_NeoPixel1+1
+  2554  0CAA  0871               	movf	??_NeoPixel1,w
+  2555  0CAB  00F4               	movwf	_NeoPixel1$73
+  2556  0CAC  0872               	movf	??_NeoPixel1+1,w
+  2557  0CAD  00F5               	movwf	_NeoPixel1$73+1
+  2558  0CAE                     l105:	
+  2559  0CAE  0874               	movf	_NeoPixel1$73,w
+  2560  0CAF  00F1               	movwf	??_NeoPixel1
+  2561  0CB0  0871               	movf	??_NeoPixel1,w
+  2562  0CB1  0020               	movlb	0	; select bank0
+  2563  0CB2  00A0               	movwf	_temp
+  2564                           
+  2565                           ;UBMPLPF.c: 76: for (i = 8; i != 0; i--) {
+  2566  0CB3  3008               	movlw	8
+  2567  0CB4  00F1               	movwf	??_NeoPixel1
+  2568  0CB5  0871               	movf	??_NeoPixel1,w
+  2569  0CB6  00FB               	movwf	_i
+  2570  0CB7  087B               	movf	_i,w
+  2571  0CB8  1903               	btfsc	3,2
+  2572  0CB9  2CC9               	goto	l999
+  2573  0CBA                     l106:	
+  2574  0CBA  140E               	bsf	270,0	;# 
+  2575  0CBB  0000               	nop	;# 
+  2576  0CBC  0000               	nop	;# 
+  2577  0CBD  1FA0               	btfss	_temp,7	;# 
+  2578  0CBE  100E               	bcf	270,0	;# 
+  2579  0CBF  0000               	nop	;# 
+  2580  0CC0  0000               	nop	;# 
+  2581  0CC1  0000               	nop	;# 
+  2582  0CC2  35A0               	lslf	_temp,f	;# 
+  2583  0CC3  100E               	bcf	270,0	;# 
+  2584  0CC4  3001               	movlw	1
+  2585  0CC5  02FB               	subwf	_i,f
+  2586  0CC6  087B               	movf	_i,w
+  2587  0CC7  1D03               	btfss	3,2
+  2588  0CC8  2CBA               	goto	l106
+  2589  0CC9                     l999:	
+  2590                           
+  2591                           ;UBMPLPF.c: 87: }
+  2592                           ;UBMPLPF.c: 88: temp = red;
+  2593  0CC9  087D               	movf	_red,w
+  2594  0CCA  00F1               	movwf	??_NeoPixel1
+  2595  0CCB  0871               	movf	??_NeoPixel1,w
+  2596  0CCC  0020               	movlb	0	; select bank0
+  2597  0CCD  00A0               	movwf	_temp
+  2598                           
+  2599                           ;UBMPLPF.c: 89: for (i = 8; i != 0; i--) {
+  2600  0CCE  3008               	movlw	8
+  2601  0CCF  00F1               	movwf	??_NeoPixel1
+  2602  0CD0  0871               	movf	??_NeoPixel1,w
+  2603  0CD1  00FB               	movwf	_i
+  2604  0CD2  087B               	movf	_i,w
+  2605  0CD3  1903               	btfsc	3,2
+  2606  0CD4  2CE4               	goto	l1007
+  2607  0CD5                     l108:	
+  2608  0CD5  140E               	bsf	270,0	;# 
+  2609  0CD6  0000               	nop	;# 
+  2610  0CD7  0000               	nop	;# 
+  2611  0CD8  1FA0               	btfss	_temp,7	;# 
+  2612  0CD9  100E               	bcf	270,0	;# 
+  2613  0CDA  0000               	nop	;# 
+  2614  0CDB  0000               	nop	;# 
+  2615  0CDC  0000               	nop	;# 
+  2616  0CDD  35A0               	lslf	_temp,f	;# 
+  2617  0CDE  100E               	bcf	270,0	;# 
+  2618  0CDF  3001               	movlw	1
+  2619  0CE0  02FB               	subwf	_i,f
+  2620  0CE1  087B               	movf	_i,w
+  2621  0CE2  1D03               	btfss	3,2
+  2622  0CE3  2CD5               	goto	l108
+  2623  0CE4                     l1007:	
+  2624                           
+  2625                           ;UBMPLPF.c: 100: }
+  2626                           ;UBMPLPF.c: 101: temp = blue;
+  2627  0CE4  087C               	movf	_blue,w
+  2628  0CE5  00F1               	movwf	??_NeoPixel1
+  2629  0CE6  0871               	movf	??_NeoPixel1,w
+  2630  0CE7  0020               	movlb	0	; select bank0
+  2631  0CE8  00A0               	movwf	_temp
+  2632                           
+  2633                           ;UBMPLPF.c: 102: for (i = 8; i != 0; i--) {
+  2634  0CE9  3008               	movlw	8
+  2635  0CEA  00F1               	movwf	??_NeoPixel1
+  2636  0CEB  0871               	movf	??_NeoPixel1,w
+  2637  0CEC  00FB               	movwf	_i
+  2638  0CED  087B               	movf	_i,w
+  2639  0CEE  1903               	btfsc	3,2
+  2640  0CEF  2CFF               	goto	l1015
+  2641  0CF0                     l110:	
+  2642  0CF0  140E               	bsf	270,0	;# 
+  2643  0CF1  0000               	nop	;# 
+  2644  0CF2  0000               	nop	;# 
+  2645  0CF3  1FA0               	btfss	_temp,7	;# 
+  2646  0CF4  100E               	bcf	270,0	;# 
+  2647  0CF5  0000               	nop	;# 
+  2648  0CF6  0000               	nop	;# 
+  2649  0CF7  0000               	nop	;# 
+  2650  0CF8  35A0               	lslf	_temp,f	;# 
+  2651  0CF9  100E               	bcf	270,0	;# 
+  2652  0CFA  3001               	movlw	1
+  2653  0CFB  02FB               	subwf	_i,f
+  2654  0CFC  087B               	movf	_i,w
+  2655  0CFD  1D03               	btfss	3,2
+  2656  0CFE  2CF0               	goto	l110
+  2657  0CFF                     l1015:	
+  2658  0CFF  3001               	movlw	1
+  2659  0D00  02F0               	subwf	NeoPixel1@leds,f
+  2660  0D01  2C9C               	goto	L6
+  2661  0D02                     __end_of_NeoPixel1:	
+  2662                           
+  2663                           	psect	text9
+  2664  1796                     __ptext9:	
+  2665 ;; *************** function _initPorts *****************
+  2666 ;; Defined at:
+  2667 ;;		line 25 in file "UBMP.c"
+  2668 ;; Parameters:    Size  Location     Type
+  2669 ;;		None
+  2670 ;; Auto vars:     Size  Location     Type
+  2671 ;;		None
+  2672 ;; Return value:  Size  Location     Type
+  2673 ;;                  1    wreg      void 
+  2674 ;; Registers used:
+  2675 ;;		wreg, status,2
+  2676 ;; Tracked objects:
+  2677 ;;		On entry : 0/0
+  2678 ;;		On exit  : 0/0
+  2679 ;;		Unchanged: 0/0
+  2680 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12
+  2681 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  2682 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  2683 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  2684 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  2685 ;;Total ram usage:        0 bytes
+  2686 ;; Hardware stack levels used:    1
+  2687 ;; This function calls:
+  2688 ;;		Nothing
+  2689 ;; This function is called by:
+  2690 ;;		_main
+  2691 ;; This function uses a non-reentrant model
+  2692 ;;
+  2693                           
+  2694                           
+  2695                           ;psect for function _initPorts
+  2696  1796                     _initPorts:	
+  2697                           
+  2698                           ;UBMP.c: 30: OPTION_REG = 0b01010111;
+  2699                           
+  2700                           ;incstack = 0
+  2701                           ; Regs used in _initPorts: [wreg+status,2]
+  2702  1796  3057               	movlw	87
+  2703  1797  0021               	movlb	1	; select bank1
+  2704  1798  0095               	movwf	21	;volatile
+  2705                           
+  2706                           ;UBMP.c: 32: LATA = 0b00000000;
+  2707  1799  0022               	movlb	2	; select bank2
+  2708  179A  018C               	clrf	12	;volatile
+  2709                           
+  2710                           ;UBMP.c: 33: ANSELA = 0b00000100;
+  2711  179B  3004               	movlw	4
+  2712  179C  0023               	movlb	3	; select bank3
+  2713  179D  008C               	movwf	12	;volatile
+  2714                           
+  2715                           ;UBMP.c: 34: TRISA = 0b00001111;
+  2716  179E  300F               	movlw	15
+  2717  179F  0021               	movlb	1	; select bank1
+  2718  17A0  008C               	movwf	12	;volatile
+  2719                           
+  2720                           ;UBMP.c: 36: LATB = 0b00000000;
+  2721  17A1  0022               	movlb	2	; select bank2
+  2722  17A2  018D               	clrf	13	;volatile
+  2723                           
+  2724                           ;UBMP.c: 37: ANSELB = 0b00000000;
+  2725  17A3  0023               	movlb	3	; select bank3
+  2726  17A4  018D               	clrf	13	;volatile
+  2727                           
+  2728                           ;UBMP.c: 38: TRISB = 0b11110000;
+  2729  17A5  30F0               	movlw	240
+  2730  17A6  0021               	movlb	1	; select bank1
+  2731  17A7  008D               	movwf	13	;volatile
+  2732                           
+  2733                           ;UBMP.c: 40: LATC = 0b00000000;
+  2734  17A8  0022               	movlb	2	; select bank2
+  2735  17A9  018E               	clrf	14	;volatile
+  2736                           
+  2737                           ;UBMP.c: 41: ANSELC = 0b00000000;
+  2738  17AA  0023               	movlb	3	; select bank3
+  2739  17AB  018E               	clrf	14	;volatile
+  2740                           
+  2741                           ;UBMP.c: 42: TRISC = 0b00000000;
+  2742  17AC  0021               	movlb	1	; select bank1
+  2743  17AD  018E               	clrf	14	;volatile
+  2744  17AE  0008               	return
+  2745  17AF                     __end_of_initPorts:	
+  2746                           
+  2747                           	psect	text10
+  2748  1771                     __ptext10:	
+  2749 ;; *************** function _initOsc *****************
+  2750 ;; Defined at:
+  2751 ;;		line 16 in file "UBMP.c"
+  2752 ;; Parameters:    Size  Location     Type
+  2753 ;;		None
+  2754 ;; Auto vars:     Size  Location     Type
+  2755 ;;		None
+  2756 ;; Return value:  Size  Location     Type
+  2757 ;;                  1    wreg      void 
+  2758 ;; Registers used:
+  2759 ;;		wreg
+  2760 ;; Tracked objects:
+  2761 ;;		On entry : 0/0
+  2762 ;;		On exit  : 0/0
+  2763 ;;		Unchanged: 0/0
+  2764 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12
+  2765 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  2766 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  2767 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  2768 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  2769 ;;Total ram usage:        0 bytes
+  2770 ;; Hardware stack levels used:    1
+  2771 ;; This function calls:
+  2772 ;;		Nothing
+  2773 ;; This function is called by:
+  2774 ;;		_main
+  2775 ;; This function uses a non-reentrant model
+  2776 ;;
+  2777                           
+  2778                           
+  2779                           ;psect for function _initOsc
+  2780  1771                     _initOsc:	
+  2781                           
+  2782                           ;UBMP.c: 18: OSCCON = 0xFC;
+  2783                           
+  2784                           ;incstack = 0
+  2785                           ; Regs used in _initOsc: [wreg]
+  2786  1771  30FC               	movlw	252
+  2787  1772  0021               	movlb	1	; select bank1
+  2788  1773  0099               	movwf	25	;volatile
+  2789                           
+  2790                           ;UBMP.c: 19: ACTCON = 0x90;
+  2791  1774  3090               	movlw	144
+  2792  1775  0027               	movlb	7	; select bank7
+  2793  1776  009B               	movwf	27	;volatile
+  2794  1777  0008               	return
+  2795  1778                     __end_of_initOsc:	
+  2796                           
+  2797                           	psect	text11
+  2798  1783                     __ptext11:	
+  2799 ;; *************** function _adConvert *****************
+  2800 ;; Defined at:
+  2801 ;;		line 56 in file "UBMPLPF.c"
+  2802 ;; Parameters:    Size  Location     Type
+  2803 ;;  chan            1    wreg     unsigned char 
+  2804 ;; Auto vars:     Size  Location     Type
+  2805 ;;  chan            1    0[COMMON] unsigned char 
+  2806 ;; Return value:  Size  Location     Type
+  2807 ;;                  1    wreg      unsigned char 
+  2808 ;; Registers used:
+  2809 ;;		wreg, status,2, status,0
+  2810 ;; Tracked objects:
+  2811 ;;		On entry : 0/0
+  2812 ;;		On exit  : 0/0
+  2813 ;;		Unchanged: 0/0
+  2814 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12
+  2815 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  2816 ;;      Locals:         1       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  2817 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  2818 ;;      Totals:         1       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  2819 ;;Total ram usage:        1 bytes
+  2820 ;; Hardware stack levels used:    1
+  2821 ;; This function calls:
+  2822 ;;		Nothing
+  2823 ;; This function is called by:
+  2824 ;;		_main
+  2825 ;; This function uses a non-reentrant model
+  2826 ;;
+  2827                           
+  2828                           
+  2829                           ;psect for function _adConvert
+  2830  1783                     _adConvert:	
+  2831                           
+  2832                           ;incstack = 0
+  2833                           ; Regs used in _adConvert: [wreg+status,2+status,0]
+  2834                           ;adConvert@chan stored from wreg
+  2835  1783  00F0               	movwf	adConvert@chan
+  2836                           
+  2837                           ;UBMPLPF.c: 57: ADON = 1;
+  2838  1784  0021               	movlb	1	; select bank1
+  2839  1785  141D               	bsf	29,0	;volatile
+  2840                           
+  2841                           ;UBMPLPF.c: 58: ADCON0 = (ADCON0 & 0b10000011);
+  2842  1786  081D               	movf	29,w	;volatile
+  2843  1787  3983               	andlw	131
+  2844  1788  009D               	movwf	29	;volatile
+  2845                           
+  2846                           ;UBMPLPF.c: 59: ADCON0 = (ADCON0 | chan);
+  2847  1789  081D               	movf	29,w	;volatile
+  2848  178A  0470               	iorwf	adConvert@chan,w
+  2849  178B  009D               	movwf	29	;volatile
+  2850                           
+  2851                           ;UBMPLPF.c: 60: _delay((unsigned long)((2)*(48000000/4000000.0)));
+  2852  178C  3008               	movlw	8
+  2853  178D                     u1657:	
+  2854  178D  0B89               	decfsz	9,f
+  2855  178E  2F8D               	goto	u1657
+  2856                           
+  2857                           ;UBMPLPF.c: 62: GO = 1;
+  2858  178F  0021               	movlb	1	; select bank1
+  2859  1790  149D               	bsf	29,1	;volatile
+  2860  1791                     l94:	
+  2861                           ;UBMPLPF.c: 63: while (GO);
+  2862                           
+  2863  1791  189D               	btfsc	29,1	;volatile
+  2864  1792  2F91               	goto	l94
+  2865                           
+  2866                           ;UBMPLPF.c: 65: ADON = 0;
+  2867  1793  101D               	bcf	29,0	;volatile
+  2868                           
+  2869                           ;UBMPLPF.c: 66: return (ADRESH);
+  2870  1794  081C               	movf	28,w	;volatile
+  2871  1795  0008               	return
+  2872  1796                     __end_of_adConvert:	
+  2873                           
+  2874                           	psect	text12
+  2875  17AF                     __ptext12:	
+  2876 ;; *************** function ___awdiv *****************
+  2877 ;; Defined at:
+  2878 ;;		line 6 in file "C:\Program Files\Microchip\xc8\v1.44\sources\common\awdiv.c"
+  2879 ;; Parameters:    Size  Location     Type
+  2880 ;;  divisor         2    0[COMMON] int 
+  2881 ;;  dividend        2    2[COMMON] int 
+  2882 ;; Auto vars:     Size  Location     Type
+  2883 ;;  quotient        2    7[COMMON] int 
+  2884 ;;  sign            1    6[COMMON] unsigned char 
+  2885 ;;  counter         1    5[COMMON] unsigned char 
+  2886 ;; Return value:  Size  Location     Type
+  2887 ;;                  2    0[COMMON] int 
+  2888 ;; Registers used:
+  2889 ;;		wreg, status,2, status,0
+  2890 ;; Tracked objects:
+  2891 ;;		On entry : 0/0
+  2892 ;;		On exit  : 0/0
+  2893 ;;		Unchanged: 0/0
+  2894 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12
+  2895 ;;      Params:         4       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  2896 ;;      Locals:         4       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  2897 ;;      Temps:          1       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  2898 ;;      Totals:         9       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+  2899 ;;Total ram usage:        9 bytes
+  2900 ;; Hardware stack levels used:    1
+  2901 ;; This function calls:
+  2902 ;;		Nothing
+  2903 ;; This function is called by:
+  2904 ;;		_main
+  2905 ;; This function uses a non-reentrant model
+  2906 ;;
+  2907                           
+  2908                           
+  2909                           ;psect for function ___awdiv
+  2910  17AF                     ___awdiv:	
+  2911                           
+  2912                           ;incstack = 0
+  2913                           ; Regs used in ___awdiv: [wreg+status,2+status,0]
+  2914  17AF  01F6               	clrf	___awdiv@sign
+  2915  17B0  1FF1               	btfss	___awdiv@divisor+1,7
+  2916  17B1  2FB9               	goto	l1257
+  2917  17B2  09F0               	comf	___awdiv@divisor,f
+  2918  17B3  09F1               	comf	___awdiv@divisor+1,f
+  2919  17B4  0AF0               	incf	___awdiv@divisor,f
+  2920  17B5  1903               	skipnz
+  2921  17B6  0AF1               	incf	___awdiv@divisor+1,f
+  2922  17B7  01F6               	clrf	___awdiv@sign
+  2923  17B8  0AF6               	incf	___awdiv@sign,f
+  2924  17B9                     l1257:	
+  2925  17B9  1FF3               	btfss	___awdiv@dividend+1,7
+  2926  17BA  2FC4               	goto	l1263
+  2927  17BB  09F2               	comf	___awdiv@dividend,f
+  2928  17BC  09F3               	comf	___awdiv@dividend+1,f
+  2929  17BD  0AF2               	incf	___awdiv@dividend,f
+  2930  17BE  1903               	skipnz
+  2931  17BF  0AF3               	incf	___awdiv@dividend+1,f
+  2932  17C0  3001               	movlw	1
+  2933  17C1  00F4               	movwf	??___awdiv
+  2934  17C2  0874               	movf	??___awdiv,w
+  2935  17C3  06F6               	xorwf	___awdiv@sign,f
+  2936  17C4                     l1263:	
+  2937  17C4  01F7               	clrf	___awdiv@quotient
+  2938  17C5  01F8               	clrf	___awdiv@quotient+1
+  2939  17C6  0870               	movf	___awdiv@divisor,w
+  2940  17C7  0471               	iorwf	___awdiv@divisor+1,w
+  2941  17C8  1903               	btfsc	3,2
+  2942  17C9  2FF3               	goto	l1285
+  2943  17CA  01F5               	clrf	___awdiv@counter
+  2944  17CB  0AF5               	incf	___awdiv@counter,f
+  2945  17CC                     l1273:	
+  2946  17CC  1BF1               	btfsc	___awdiv@divisor+1,7
+  2947  17CD  2FD8               	goto	l1275
+  2948  17CE  3001               	movlw	1
+  2949  17CF                     u1485:	
+  2950  17CF  35F0               	lslf	___awdiv@divisor,f
+  2951  17D0  0DF1               	rlf	___awdiv@divisor+1,f
+  2952  17D1  0B89               	decfsz	9,f
+  2953  17D2  2FCF               	goto	u1485
+  2954  17D3  3001               	movlw	1
+  2955  17D4  00F4               	movwf	??___awdiv
+  2956  17D5  0874               	movf	??___awdiv,w
+  2957  17D6  07F5               	addwf	___awdiv@counter,f
+  2958  17D7  2FCC               	goto	l1273
+  2959  17D8                     l1275:	
+  2960  17D8  3001               	movlw	1
+  2961  17D9                     u1505:	
+  2962  17D9  35F7               	lslf	___awdiv@quotient,f
+  2963  17DA  0DF8               	rlf	___awdiv@quotient+1,f
+  2964  17DB  0B89               	decfsz	9,f
+  2965  17DC  2FD9               	goto	u1505
+  2966  17DD  0871               	movf	___awdiv@divisor+1,w
+  2967  17DE  0273               	subwf	___awdiv@dividend+1,w
+  2968  17DF  1D03               	skipz
+  2969  17E0  2FE3               	goto	u1515
+  2970  17E1  0870               	movf	___awdiv@divisor,w
+  2971  17E2  0272               	subwf	___awdiv@dividend,w
+  2972  17E3                     u1515:	
+  2973  17E3  1C03               	skipc
+  2974  17E4  2FEA               	goto	l1281
+  2975  17E5  0870               	movf	___awdiv@divisor,w
+  2976  17E6  02F2               	subwf	___awdiv@dividend,f
+  2977  17E7  0871               	movf	___awdiv@divisor+1,w
+  2978  17E8  3BF3               	subwfb	___awdiv@dividend+1,f
+  2979  17E9  1477               	bsf	___awdiv@quotient,0
+  2980  17EA                     l1281:	
+  2981  17EA  3001               	movlw	1
+  2982  17EB                     u1525:	
+  2983  17EB  36F1               	lsrf	___awdiv@divisor+1,f
+  2984  17EC  0CF0               	rrf	___awdiv@divisor,f
+  2985  17ED  0B89               	decfsz	9,f
+  2986  17EE  2FEB               	goto	u1525
+  2987  17EF  3001               	movlw	1
+  2988  17F0  02F5               	subwf	___awdiv@counter,f
+  2989  17F1  1D03               	btfss	3,2
+  2990  17F2  2FD8               	goto	l1275
+  2991  17F3                     l1285:	
+  2992  17F3  0876               	movf	___awdiv@sign,w
+  2993  17F4  1903               	btfsc	3,2
+  2994  17F5  2FFB               	goto	l1289
+  2995  17F6  09F7               	comf	___awdiv@quotient,f
+  2996  17F7  09F8               	comf	___awdiv@quotient+1,f
+  2997  17F8  0AF7               	incf	___awdiv@quotient,f
+  2998  17F9  1903               	skipnz
+  2999  17FA  0AF8               	incf	___awdiv@quotient+1,f
+  3000  17FB                     l1289:	
+  3001  17FB  0878               	movf	___awdiv@quotient+1,w
+  3002  17FC  00F1               	movwf	?___awdiv+1
+  3003  17FD  0877               	movf	___awdiv@quotient,w
+  3004  17FE  00F0               	movwf	?___awdiv
+  3005  17FF  0008               	return
+  3006  1800                     __end_of___awdiv:	
+  3007  007E                     btemp	set	126	;btemp
+  3008  007E                     wtemp0	set	126
+
+
+Data Sizes:
+    Strings     0
+    Constant    257
+    Data        11
+    BSS         14
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMMON           14     11      14
+    BANK0            80      9      31
+    BANK1            80      0       0
+    BANK2            80      0       0
+    BANK3            80      0       0
+    BANK4            80      0       0
+    BANK5            80      0       0
+    BANK6            80      0       0
+    BANK7            80      0       0
+    BANK8            80      0       0
+    BANK9            80      0       0
+    BANK10           80      0       0
+    BANK11           80      0       0
+    BANK12           48      0       0
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMMON
+
+    _main->___awdiv
+    _main->_lights
+    _lights->_NeoPixel1
+    _lights->_NeoPixel2
+    _lights->_NeoPixel3
+    _lights->_NeoPixel4
+    _lights->_NeoPixel5
+    _lights->_NeoPixel6
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under _main in BANK4
+
+    None.
+
+Critical Paths under _main in BANK5
+
+    None.
+
+Critical Paths under _main in BANK6
+
+    None.
+
+Critical Paths under _main in BANK7
+
+    None.
+
+Critical Paths under _main in BANK8
+
+    None.
+
+Critical Paths under _main in BANK9
+
+    None.
+
+Critical Paths under _main in BANK10
+
+    None.
+
+Critical Paths under _main in BANK11
+
+    None.
+
+Critical Paths under _main in BANK12
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                11    11      0    1807
+                                              9 COMMON     2     2      0
+                                              0 BANK0      9     9      0
+                            ___awdiv
+                          _adConvert
+                            _initOsc
+                          _initPorts
+                             _lights
+ ---------------------------------------------------------------------------------
+ (1) _lights                                               3     2      1    1375
+                                              6 COMMON     3     2      1
+                          _NeoPixel1
+                          _NeoPixel2
+                          _NeoPixel3
+                          _NeoPixel4
+                          _NeoPixel5
+                          _NeoPixel6
+                          _NeoPixel7
+ ---------------------------------------------------------------------------------
+ (2) _NeoPixel7                                            3     2      1      88
+                                              0 COMMON     2     1      1
+ ---------------------------------------------------------------------------------
+ (2) _NeoPixel6                                            6     5      1     156
+                                              0 COMMON     6     5      1
+ ---------------------------------------------------------------------------------
+ (2) _NeoPixel5                                            6     5      1     156
+                                              0 COMMON     6     5      1
+ ---------------------------------------------------------------------------------
+ (2) _NeoPixel4                                            6     5      1     156
+                                              0 COMMON     6     5      1
+ ---------------------------------------------------------------------------------
+ (2) _NeoPixel3                                            6     5      1     156
+                                              0 COMMON     6     5      1
+ ---------------------------------------------------------------------------------
+ (2) _NeoPixel2                                            6     5      1     156
+                                              0 COMMON     6     5      1
+ ---------------------------------------------------------------------------------
+ (2) _NeoPixel1                                            6     5      1     156
+                                              0 COMMON     6     5      1
+ ---------------------------------------------------------------------------------
+ (1) _initPorts                                            0     0      0       0
+ ---------------------------------------------------------------------------------
+ (1) _initOsc                                              0     0      0       0
+ ---------------------------------------------------------------------------------
+ (1) _adConvert                                            1     1      0      22
+                                              0 COMMON     1     1      0
+ ---------------------------------------------------------------------------------
+ (1) ___awdiv                                              9     5      4     386
+                                              0 COMMON     9     5      4
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 2
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   ___awdiv
+   _adConvert
+   _initOsc
+   _initPorts
+   _lights
+     _NeoPixel1
+     _NeoPixel2
+     _NeoPixel3
+     _NeoPixel4
+     _NeoPixel5
+     _NeoPixel6
+     _NeoPixel7
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BIGRAM             3F0      0       0       0        0.0%
+NULL                 0      0       0       0        0.0%
+CODE                 0      0       0       0        0.0%
+BITCOMMON            E      0       0       1        0.0%
+BITSFR0              0      0       0       1        0.0%
+SFR0                 0      0       0       1        0.0%
+COMMON               E      B       E       2      100.0%
+BITSFR1              0      0       0       2        0.0%
+SFR1                 0      0       0       2        0.0%
+BITSFR2              0      0       0       3        0.0%
+SFR2                 0      0       0       3        0.0%
+STACK                0      0       0       3        0.0%
+BITBANK0            50      0       0       4        0.0%
+BITSFR3              0      0       0       4        0.0%
+SFR3                 0      0       0       4        0.0%
+BANK0               50      9      1F       5       38.8%
+BITSFR4              0      0       0       5        0.0%
+SFR4                 0      0       0       5        0.0%
+BITBANK1            50      0       0       6        0.0%
+BITSFR5              0      0       0       6        0.0%
+SFR5                 0      0       0       6        0.0%
+BANK1               50      0       0       7        0.0%
+BITSFR6              0      0       0       7        0.0%
+SFR6                 0      0       0       7        0.0%
+BITBANK2            50      0       0       8        0.0%
+BITSFR7              0      0       0       8        0.0%
+SFR7                 0      0       0       8        0.0%
+BANK2               50      0       0       9        0.0%
+BITSFR8              0      0       0       9        0.0%
+SFR8                 0      0       0       9        0.0%
+BITBANK3            50      0       0      10        0.0%
+BITSFR9              0      0       0      10        0.0%
+SFR9                 0      0       0      10        0.0%
+BANK3               50      0       0      11        0.0%
+BITSFR10             0      0       0      11        0.0%
+SFR10                0      0       0      11        0.0%
+BITBANK4            50      0       0      12        0.0%
+BITSFR11             0      0       0      12        0.0%
+SFR11                0      0       0      12        0.0%
+BANK4               50      0       0      13        0.0%
+BITSFR12             0      0       0      13        0.0%
+SFR12                0      0       0      13        0.0%
+BITBANK5            50      0       0      14        0.0%
+BITSFR13             0      0       0      14        0.0%
+SFR13                0      0       0      14        0.0%
+BANK5               50      0       0      15        0.0%
+BITSFR14             0      0       0      15        0.0%
+SFR14                0      0       0      15        0.0%
+BITBANK6            50      0       0      16        0.0%
+BITSFR15             0      0       0      16        0.0%
+SFR15                0      0       0      16        0.0%
+BANK6               50      0       0      17        0.0%
+BITSFR16             0      0       0      17        0.0%
+SFR16                0      0       0      17        0.0%
+BITBANK7            50      0       0      18        0.0%
+BITSFR17             0      0       0      18        0.0%
+SFR17                0      0       0      18        0.0%
+BANK7               50      0       0      19        0.0%
+BITSFR18             0      0       0      19        0.0%
+SFR18                0      0       0      19        0.0%
+BITSFR19             0      0       0      20        0.0%
+SFR19                0      0       0      20        0.0%
+ABS                  0      0      2D      20        0.0%
+BITBANK8            50      0       0      21        0.0%
+BITSFR20             0      0       0      21        0.0%
+SFR20                0      0       0      21        0.0%
+BANK8               50      0       0      22        0.0%
+BITSFR21             0      0       0      22        0.0%
+SFR21                0      0       0      22        0.0%
+BITBANK9            50      0       0      23        0.0%
+BITSFR22             0      0       0      23        0.0%
+SFR22                0      0       0      23        0.0%
+BANK9               50      0       0      24        0.0%
+BITSFR23             0      0       0      24        0.0%
+SFR23                0      0       0      24        0.0%
+BITBANK10           50      0       0      25        0.0%
+BITSFR24             0      0       0      25        0.0%
+SFR24                0      0       0      25        0.0%
+BANK10              50      0       0      26        0.0%
+BITSFR25             0      0       0      26        0.0%
+SFR25                0      0       0      26        0.0%
+BITBANK11           50      0       0      27        0.0%
+BITSFR26             0      0       0      27        0.0%
+SFR26                0      0       0      27        0.0%
+BANK11              50      0       0      28        0.0%
+BITSFR27             0      0       0      28        0.0%
+SFR27                0      0       0      28        0.0%
+BITBANK12           30      0       0      29        0.0%
+BITSFR28             0      0       0      29        0.0%
+SFR28                0      0       0      29        0.0%
+BANK12              30      0       0      30        0.0%
+BITSFR29             0      0       0      30        0.0%
+SFR29                0      0       0      30        0.0%
+BITSFR30             0      0       0      31        0.0%
+SFR30                0      0       0      31        0.0%
+DATA                 0      0      2D      31        0.0%
+BITSFR31             0      0       0      32        0.0%
+SFR31                0      0       0      32        0.0%
+
+
+Microchip Technology PIC Macro Assembler V1.44 build -154322312 
+Symbol Table                                                                                   Tue Dec 19 10:34:49 2017
+
+                      _i 007B              __CFG_CP$OFF 0000                       l94 1791  
+                     _GO 04E9             ___awdiv@sign 0076                      LATA 010C  
+                    LATC 010E   __end_of_LPFLookupTable 1100                      l110 0CF0  
+                    l120 0D15                      l105 0CAE                      l121 0D21  
+                    l106 0CBA                      l123 0D3C                      l108 0CD5  
+                    l140 0DBE                      l125 0D57                      l150 0DE3  
+                    l135 0D7C                      l151 0DEF                      l136 0D88  
+                    l153 0E0A                      l138 0DA3                      l170 0E8C  
+                    l155 0E25                      l180 0EB1                      l165 0E4A  
+                    l181 0EBD                      l166 0E56                      l183 0ED8  
+                    l168 0E71                      l192 0C52                      l185 0EF3  
+                    l194 0C6E                      l196 0C89                      l991 0CA6  
+                    l999 0CC9                      _RA3 0063                      _red 007D  
+           __CFG_BORV$LO 0000                      wreg 0009             __CFG_LVP$OFF 0000  
+                   l1101 0DFE                     l1015 0CFF                     l1007 0CE4  
+                   l1041 0D4B                     l1033 0D30                     l1025 0D0D  
+                   l1117 0E34                     l1109 0E19                     l1151 0E9B  
+                   l1143 0E80                     l1135 0E65                     l1127 0E42  
+                   l1215 0C98                     l1207 0C7D                     l1049 0D66  
+                   l1161 0EA9                     l1321 0F40                     l1313 0F35  
+                   l1083 0DCD                     l1075 0DB2                     l1067 0D97  
+                   l1059 0D74                     l1315 0F37                     l1093 0DDB  
+                   l1333 0F76                     l1263 17C4                     l1343 0F9B  
+                   l1327 0F5D                     l1281 17EA                     l1273 17CC  
+                   l1257 17B9                     l1185 0F02                     l1177 0EE7  
+                   l1169 0ECC                     l1275 17D8                     l1339 0F8B  
+                   l1347 0FA3                     l1285 17F3                     l1199 0C62  
+                   l1289 17FB                     l1297 0F14                     _ADON 04E8  
+                   _LATA 010C                     _LATB 010D                     _LATC 010E  
+                   u1505 17D9                     u1515 17E3                     u1525 17EB  
+                   u1485 17CF                     u1637 0F0F                     u1647 0FD8  
+                   u1657 178D             __CFG_WRT$OFF 0000                     _max1 0027  
+                   _max2 0026                     _max3 0025                     _blue 007C  
+                   _max4 0024                     _main 0F05                     _temp 0020  
+                   fsr0h 0005                     fsr1h 0007                     indf0 0000  
+                   fsr0l 0004                     indf1 0001                     fsr1l 0006  
+                   btemp 007E                     start 0C07            __CFG_IESO$OFF 0000  
+                  ?_main 0070          __end_of___awdiv 1800            __CFG_WDTE$OFF 0000  
+        ___awdiv@divisor 0070          ___awdiv@counter 0075                    _TRISA 008C  
+                  _TRISB 008D                    _TRISC 008E            __CFG_PWRTE$ON 0000  
+         __CFG_FCMEN$OFF 0000          __end_of_maxLEDs 1801          __end_of_initOsc 1778  
+                  _green 0035           __CFG_BOREN$OFF 0000                    status 0003  
+                  wtemp0 007E           __CFG_MCLRE$OFF 0000          __initialization 0FE4  
+           __end_of_main 0FE4           __CFG_LPBOR$OFF 0000                   ??_main 0036  
+    __CFG_USBLSCLK$48MHz 0000                   _ADCON0 009D                   _ADCON1 009E  
+                 _ADCON2 009F                   _ACTCON 039B                   _ADRESH 009C  
+       ___awdiv@dividend 0072                   _ANSELA 018C                   _ANSELB 018D  
+                 _ANSELC 018E                   _LPFAvg 0029       __size_of_NeoPixel1 0067  
+     __size_of_NeoPixel2 0067       __size_of_NeoPixel3 0067       __size_of_NeoPixel4 0067  
+     __size_of_NeoPixel5 0067       __size_of_NeoPixel6 0067       __size_of_NeoPixel7 0058  
+                 _OSCCON 0099                ??___awdiv 0074           __CFG_STVREN$ON 0000  
+                 _lights 0C0A         ___awdiv@quotient 0077                   _tempIN 0028  
+              ??_initOsc 0070       __size_of_adConvert 0013          NeoPixel1@height 0073  
+        NeoPixel2@height 0073          NeoPixel3@height 0073          NeoPixel4@height 0073  
+        NeoPixel5@height 0073          NeoPixel6@height 0073          NeoPixel7@height 0070  
+__end_of__initialization 0FFD           __pcstackCOMMON 0070             __pidataBANK0 1778  
+      __end_of_NeoPixel1 0D02        __end_of_NeoPixel2 0D69        __end_of_NeoPixel3 0DD0  
+      __end_of_NeoPixel4 0E37        __end_of_NeoPixel5 0E9E        __end_of_NeoPixel6 0F05  
+      __end_of_NeoPixel7 0C9B            NeoPixel1@leds 0070            NeoPixel2@leds 0070  
+          NeoPixel3@leds 0070            NeoPixel4@leds 0070            NeoPixel5@leds 0070  
+          NeoPixel6@leds 0070            NeoPixel7@leds 0070               __pbssBANK0 0020  
+     __size_of_initPorts 0019               __pmaintext 0F05        __end_of_adConvert 1796  
+        __CFG_PLLMULT$3x 0000                  ?_lights 0076                  ___awdiv 17AF  
+        __size_of_lights 0039                  __ptext1 0C0A                  __ptext2 0C43  
+                __ptext3 0E9E                  __ptext4 0E37                  __ptext5 0DD0  
+                __ptext6 0D69                  __ptext7 0D02                  __ptext8 0C9B  
+                __ptext9 1796                  _maxLEDs 1800                  _lastVal 002A  
+      __end_of_initPorts 17AF                  _initOsc 1771                  _tempRed 0023  
+   end_of_initialization 0FFD                  init_ram 176B                  initloop 176C  
+       __CFG_FOSC$INTOSC 0000             _NeoPixel1$73 0074             _NeoPixel2$77 0074  
+           _NeoPixel3$81 0074             _NeoPixel4$85 0074             _NeoPixel5$89 0074  
+           _NeoPixel6$93 0074       __CFG_PLLEN$ENABLED 0000           __end_of_lights 0C43  
+    start_initialization 0FE4                _NeoPixel1 0C9B                _NeoPixel2 0D02  
+              _NeoPixel3 0D69                _NeoPixel4 0DD0                _NeoPixel5 0E37  
+              _NeoPixel6 0E9E                _NeoPixel7 0C43              __pdataBANK0 002B  
+               ??_lights 0077                _adConvert 1783              __pbssCOMMON 007B  
+             ?_NeoPixel1 0070               ?_NeoPixel2 0070               ?_NeoPixel3 0070  
+             ?_NeoPixel4 0070               ?_NeoPixel5 0070               ?_NeoPixel6 0070  
+             ?_NeoPixel7 0070                ___latbits 0002            __pcstackBANK0 0036  
+               ?___awdiv 0070               ?_adConvert 0070                 ?_initOsc 0070  
+              _initPorts 1796                _tempGreen 0022                 _LPFInput 002B  
+            ??_NeoPixel1 0071              ??_NeoPixel2 0071              ??_NeoPixel3 0071  
+            ??_NeoPixel4 0071              ??_NeoPixel5 0071              ??_NeoPixel6 0071  
+            ??_NeoPixel7 0071               ?_initPorts 0070            lights@height2 0078  
+       __size_of___awdiv 0051              ??_adConvert 0070            lights@numLeds 0076  
+       __size_of_initOsc 0007                 _main$115 0079                 __ptext10 1771  
+               __ptext11 1783                 __ptext12 17AF            __size_of_main 00DF  
+               _tempBlue 0021              ??_initPorts 0070        __CFG_CLKOUTEN$OFF 0000  
+          adConvert@chan 0070     __CFG_CPUDIV$NOCLKDIV 0000            __pstringtext1 1000  
+          __pstringtext2 1800               _OPTION_REG 0095           _LPFLookupTable 1000  

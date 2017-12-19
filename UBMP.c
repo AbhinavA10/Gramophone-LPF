@@ -17,7 +17,7 @@ void initOsc(void)
 {
 	OSCCON = 0xFC;				// 3x PLL enabled from 16MHz HFINTOSC
 	ACTCON = 0x90;				// Enable active clock tuning from USB
-	while(!PLLRDY);				// Wait for PLL lock
+	//while(!PLLRDY);				// Wait for PLL lock
 }
 
 // Initialize hardware ports and peripherals. Set starting conditions.
