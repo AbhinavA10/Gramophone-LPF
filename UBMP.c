@@ -17,7 +17,7 @@ void initOsc(void)
 {
 	OSCCON = 0xFC;				// 3x PLL enabled from 16MHz HFINTOSC
 	ACTCON = 0x90;				// Enable active clock tuning from USB
-	//while(!PLLRDY);				// Wait for PLL lock
+	while(!PLLRDY);				// Wait for PLL lock
 }
 
 // Initialize hardware ports and peripherals. Set starting conditions.
@@ -31,7 +31,7 @@ void initPorts(void)
 	
 	LATA = 0b00000000;			// Clear Port A latches before configuring PORTA
 	ANSELA = 0b00000100;		// Make all RA3 Analogue
-	TRISA = 0b00001111;			// Set RUNLED and Beeper as outputs
+	TRISA = 0b00011111;			// Set RUNLED as output, USB Datalines, beeper hole (LPF), S1 as inputs
 
 	LATB = 0b00000000;			// Clear Port B latches before configuring PORTB
 	ANSELB = 0b00000000;		// Make all Port B pins digital

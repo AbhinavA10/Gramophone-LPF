@@ -49,7 +49,7 @@
 #define	NPIXEL7     LATC6		// Servo 7 output (header H7)
 #define	H8			RC7			// External I/O header H8 input
 #define	LED6		LATC7		// LED6 output
-#define	SERVO		LATC7		// Servo 8 output (header H8)
+#define	SERVOFLOWER	LATC7		// Servo 8 output (header H8)
 
 // A-D Converter input channel definitions
 

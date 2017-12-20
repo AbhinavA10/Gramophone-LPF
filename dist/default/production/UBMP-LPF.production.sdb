@@ -3,77 +3,63 @@
 [d edition pro ]
 [d chip 16F1459 ]
 [d frameptr 6 ]
-"6 C:\Program Files\Microchip\xc8\v1.44\sources\common\awdiv.c
+"6 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\awdiv.c
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
-"62 C:\Program Files\Microchip\xc8\v1.44\sources\common\float.c
+"62 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\float.c
 [v ___ftpack __ftpack `(f  1 e 3 0 ]
-"86 C:\Program Files\Microchip\xc8\v1.44\sources\common\ftadd.c
+"86 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\ftadd.c
 [v ___ftadd __ftadd `(f  1 e 3 0 ]
-"16 H:\MPLAB\UBMP-LPF\UBMP.c
+"16 C:\Users\Abhi\Documents\MPLAB\UBMP-LPF\UBMP.c
 [v _initOsc initOsc `(v  1 e 1 0 ]
 "25
 [v _initPorts initPorts `(v  1 e 1 0 ]
-"56 H:\MPLAB\UBMP-LPF\UBMPLPF.c
+"56 C:\Users\Abhi\Documents\MPLAB\UBMP-LPF\UBMPLPF.c
 [v _adConvert adConvert `(uc  1 e 1 0 ]
-"73
-[v _NeoPixel1 NeoPixel1 `(v  1 e 1 0 ]
-"121
-[v _NeoPixel2 NeoPixel2 `(v  1 e 1 0 ]
-"170
-[v _NeoPixel3 NeoPixel3 `(v  1 e 1 0 ]
-"218
-[v _NeoPixel4 NeoPixel4 `(v  1 e 1 0 ]
-"266
-[v _NeoPixel5 NeoPixel5 `(v  1 e 1 0 ]
-"314
-[v _NeoPixel6 NeoPixel6 `(v  1 e 1 0 ]
 "362
 [v _NeoPixel7 NeoPixel7 `(v  1 e 1 0 ]
 "409
 [v _lights lights `(v  1 e 1 0 ]
 "422
 [v _main main `(i  1 e 2 0 ]
-"1002 C:\Program Files\Microchip\xc8\v1.44\include\pic16f1459.h
+"973 C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic16f1459.h
 [v _TRISA TRISA `VEuc  1 e 1 @140 ]
-"1029
+"999
 [v _TRISB TRISB `VEuc  1 e 1 @141 ]
-"1068
+"1037
 [v _TRISC TRISC `VEuc  1 e 1 @142 ]
-"1239
+"1205
 [v _OPTION_REG OPTION_REG `VEuc  1 e 1 @149 ]
-"1502
+"1464
 [v _OSCCON OSCCON `VEuc  1 e 1 @153 ]
-"1656
+"1614
 [v _ADRESH ADRESH `VEuc  1 e 1 @156 ]
-"1676
+"1633
 [v _ADCON0 ADCON0 `VEuc  1 e 1 @157 ]
-"1756
+"1712
 [v _ADCON1 ADCON1 `VEuc  1 e 1 @158 ]
-"1822
+"1777
 [v _ADCON2 ADCON2 `VEuc  1 e 1 @159 ]
-"1864
+"1818
 [v _LATA LATA `VEuc  1 e 1 @268 ]
-"1891
+"1844
 [v _LATB LATB `VEuc  1 e 1 @269 ]
-"1930
+"1882
 [v _LATC LATC `VEuc  1 e 1 @270 ]
-"2517
+"2458
 [v _ANSELA ANSELA `VEuc  1 e 1 @396 ]
-"2546
+"2486
 [v _ANSELB ANSELB `VEuc  1 e 1 @397 ]
-"2582
+"2521
 [v _ANSELC ANSELC `VEuc  1 e 1 @398 ]
-"4299
+"4204
 [v _ACTCON ACTCON `VEuc  1 e 1 @923 ]
-"6191
+"6055
 [v _ADON ADON `VEb  1 e 0 @1256 ]
-"6499
+"6363
 [v _GO GO `VEb  1 e 0 @1257 ]
-"6639
-[v _PLLRDY PLLRDY `VEb  1 e 0 @1238 ]
-"6717
+"6581
 [v _RA3 RA3 `VEb  1 e 0 @99 ]
-"20 H:\MPLAB\UBMP-LPF\UBMPLPF.c
+"20 C:\Users\Abhi\Documents\MPLAB\UBMP-LPF\UBMPLPF.c
 [v _LPFInput LPFInput `[10]uc  1 e 10 0 ]
 "21
 [v _lastVal lastVal `uc  1 e 1 0 ]
@@ -93,13 +79,13 @@
 "28
 [v _blue blue `uc  1 e 1 0 ]
 "34
-[v _maxLEDs maxLEDs `DCuc  1 e 1 0 ]
+[v _maxLEDs maxLEDs `DCCuc  1 e 1 0 ]
 "36
 [v _temp temp `uc  1 e 1 0 ]
 "37
 [v _i i `uc  1 e 1 0 ]
 "42
-[v _LPFLookupTable LPFLookupTable `DC[256]uc  1 e 256 0 ]
+[v _LPFLookupTable LPFLookupTable `DCC[256]uc  1 e 256 0 ]
 "422
 [v _main main `(i  1 e 2 0 ]
 {
@@ -111,6 +97,7 @@
 [v lights@height2 height2 `uc  1 a 1 wreg ]
 [v lights@height2 height2 `uc  1 a 1 wreg ]
 [v lights@numLeds numLeds `uc  1 p 1 6 ]
+"416
 [v lights@height2 height2 `uc  1 a 1 8 ]
 "417
 } 0
@@ -123,61 +110,7 @@
 [v NeoPixel7@height height `uc  1 a 1 3 ]
 "404
 } 0
-"314
-[v _NeoPixel6 NeoPixel6 `(v  1 e 1 0 ]
-{
-[v NeoPixel6@height height `uc  1 a 1 wreg ]
-[v NeoPixel6@height height `uc  1 a 1 wreg ]
-[v NeoPixel6@leds leds `uc  1 p 1 0 ]
-[v NeoPixel6@height height `uc  1 a 1 3 ]
-"356
-} 0
-"266
-[v _NeoPixel5 NeoPixel5 `(v  1 e 1 0 ]
-{
-[v NeoPixel5@height height `uc  1 a 1 wreg ]
-[v NeoPixel5@height height `uc  1 a 1 wreg ]
-[v NeoPixel5@leds leds `uc  1 p 1 0 ]
-[v NeoPixel5@height height `uc  1 a 1 3 ]
-"308
-} 0
-"218
-[v _NeoPixel4 NeoPixel4 `(v  1 e 1 0 ]
-{
-[v NeoPixel4@height height `uc  1 a 1 wreg ]
-[v NeoPixel4@height height `uc  1 a 1 wreg ]
-[v NeoPixel4@leds leds `uc  1 p 1 0 ]
-[v NeoPixel4@height height `uc  1 a 1 3 ]
-"260
-} 0
-"170
-[v _NeoPixel3 NeoPixel3 `(v  1 e 1 0 ]
-{
-[v NeoPixel3@height height `uc  1 a 1 wreg ]
-[v NeoPixel3@height height `uc  1 a 1 wreg ]
-[v NeoPixel3@leds leds `uc  1 p 1 0 ]
-[v NeoPixel3@height height `uc  1 a 1 3 ]
-"212
-} 0
-"121
-[v _NeoPixel2 NeoPixel2 `(v  1 e 1 0 ]
-{
-[v NeoPixel2@height height `uc  1 a 1 wreg ]
-[v NeoPixel2@height height `uc  1 a 1 wreg ]
-[v NeoPixel2@leds leds `uc  1 p 1 0 ]
-[v NeoPixel2@height height `uc  1 a 1 3 ]
-"163
-} 0
-"73
-[v _NeoPixel1 NeoPixel1 `(v  1 e 1 0 ]
-{
-[v NeoPixel1@height height `uc  1 a 1 wreg ]
-[v NeoPixel1@height height `uc  1 a 1 wreg ]
-[v NeoPixel1@leds leds `uc  1 p 1 0 ]
-[v NeoPixel1@height height `uc  1 a 1 3 ]
-"115
-} 0
-"25 H:\MPLAB\UBMP-LPF\UBMP.c
+"25 C:\Users\Abhi\Documents\MPLAB\UBMP-LPF\UBMP.c
 [v _initPorts initPorts `(v  1 e 1 0 ]
 {
 "45
@@ -187,7 +120,7 @@
 {
 "21
 } 0
-"56 H:\MPLAB\UBMP-LPF\UBMPLPF.c
+"56 C:\Users\Abhi\Documents\MPLAB\UBMP-LPF\UBMPLPF.c
 [v _adConvert adConvert `(uc  1 e 1 0 ]
 {
 [v adConvert@chan chan `uc  1 a 1 wreg ]
@@ -195,7 +128,7 @@
 [v adConvert@chan chan `uc  1 a 1 0 ]
 "67
 } 0
-"6 C:\Program Files\Microchip\xc8\v1.44\sources\common\awdiv.c
+"6 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\awdiv.c
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
 {
 "11

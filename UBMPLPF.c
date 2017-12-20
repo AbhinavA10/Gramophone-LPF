@@ -16,6 +16,7 @@
 
 // TODO Set linker ROM ranges to 'default,-0-C03' under "Memory model" pull-down.
 // TODO Set linker Code offset to '0xC04' under "Additional options" pull-down.
+// TODO Set Instruction Freq. to 12MHz for simulator debugging
 
 unsigned char LPFInput[10] = {127, 127, 127, 127, 127, 127, 127, 127, 127, 127};
 unsigned char lastVal = 0;
@@ -30,24 +31,27 @@ unsigned char blue = 0;
 unsigned char tempRed;
 unsigned char tempGreen;
 unsigned char tempBlue;
+unsigned char servoPos = 0;
 
-const char maxLEDs = 30;
+const char maxLEDs = 24;
 
 unsigned char temp;
 unsigned char i;
 
-// max LPF is 251
-// min LPF is 230?
-// there will be 8 groups of 3 LEDs on each side of the gramophone
+/* min LPF is 88
+max LPF is 198
+Range is 110 values, across 24 LEDs, (8 groups of 3 LEDs on each side of the gramophone)
+Therefore, each LED will repeat 4 times in the table, 5 times for even, 4 for odd
+ */
 const unsigned char LPFLookupTable[256] = {
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, // 31
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, //63
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 3, // 95
-    3, 3, 4, 4, 4, 4, 5, 5, 5, 6, 6, 6, 6, 7, 7, 7, 8, 8, 8, 8, 9, 9, 9, 10, 10, 10, 10, 11, 11, 11, 12, 12,
-    12, 12, 13, 13, 13, 14, 14, 14, 14, 15, 15, 15, 16, 16, 16, 16, 17, 17, 17, 18, 18, 18, 18, 19, 19, 19, 20, 20, 20, 20, 21, 21,
-    21, 22, 22, 22, 22, 23, 23, 23, 24, 24, 24, 24, 25, 25, 25, 26, 26, 26, 26, 27, 27, 27, 28, 28, 28, 28, 29, 29, 29, 30, 30, 30, //191
-    30, 30, 30, 30, 30, 30, 30, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 221, 222, 223,
-    224, 225, 226, 227, 228, 229, 230, 0, 1, 2, 4, 6, 8, 9, 10, 12, 14, 15, 16, 18, 20, 22, 24, 26, 27, 28, 29, 30, 30, 30, 30, 30 // first 30 is 251th index
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, // last value is 31st index
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, // last value is 63th index
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 83, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, // last value is 95th index
+    2, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, // last value is 127th index
+    10, 10, 10, 10, 10, 11, 11, 11, 11, 12, 12, 12, 12, 12, 13, 13, 13, 13, 14, 14, 14, 14, 14, 15, 15, 15, 15, 16, 16, 16, 16, 16, // last value is 159th index
+    17, 17, 17, 17, 18, 18, 18, 18, 18, 19, 19, 19, 19, 19, 20, 20, 20, 20, 20, 21, 21, 21, 21, 22, 22, 22, 22, 22, 23, 23, 23, 23, // last value is 191th index
+    24, 24, 24, 24, 24, 24, 24, 0, 0, 0, 202, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 220, 0, 0, 0, // last value is 223rd index
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 // last value is 255th index
 };
 
 /*==============================================================================
@@ -67,6 +71,18 @@ unsigned char adConvert(unsigned char chan) {
 }
 
 /*==============================================================================
+ TURN SERVO
+==============================================================================*/
+unsigned char turnServo(unsigned char value) {
+    SERVOFLOWER = 1;
+    __delay_us(980);
+    for (unsigned char i = 255 - value; i != 0; i--) {
+        __delay_us(4);
+    }
+    SERVOFLOWER = 0;
+}
+
+/*==============================================================================
  NeoPixel1
  * #define	NEOPIXEL1	LATC0		// External I/O header H1 output
 ==============================================================================*/
@@ -81,7 +97,6 @@ void NeoPixel1(unsigned char height, unsigned char leds) {
             asm("bcf LATC,0");
             asm("nop");
             asm("nop");
-            asm("nop");
             asm("lslf _temp,f");
             asm("bcf LATC,0");
         }
@@ -94,7 +109,6 @@ void NeoPixel1(unsigned char height, unsigned char leds) {
             asm("bcf LATC,0");
             asm("nop");
             asm("nop");
-            asm("nop");
             asm("lslf _temp,f");
             asm("bcf LATC,0");
         }
@@ -105,7 +119,6 @@ void NeoPixel1(unsigned char height, unsigned char leds) {
             asm("nop");
             asm("btfss _temp,7");
             asm("bcf LATC,0");
-            asm("nop");
             asm("nop");
             asm("nop");
             asm("lslf _temp,f");
@@ -129,7 +142,6 @@ void NeoPixel2(unsigned char height, unsigned char leds) {
             asm("bcf LATC,1");
             asm("nop");
             asm("nop");
-            asm("nop");
             asm("lslf _temp,f");
             asm("bcf LATC,1");
         }
@@ -142,7 +154,6 @@ void NeoPixel2(unsigned char height, unsigned char leds) {
             asm("bcf LATC,1");
             asm("nop");
             asm("nop");
-            asm("nop");
             asm("lslf _temp,f");
             asm("bcf LATC,1");
         }
@@ -153,7 +164,6 @@ void NeoPixel2(unsigned char height, unsigned char leds) {
             asm("nop");
             asm("btfss _temp,7");
             asm("bcf LATC,1");
-            asm("nop");
             asm("nop");
             asm("nop");
             asm("lslf _temp,f");
@@ -178,7 +188,6 @@ void NeoPixel3(unsigned char height, unsigned char leds) {
             asm("bcf LATC,0");
             asm("nop");
             asm("nop");
-            asm("nop");
             asm("lslf _temp,f");
             asm("bcf LATC,0");
         }
@@ -191,7 +200,6 @@ void NeoPixel3(unsigned char height, unsigned char leds) {
             asm("bcf LATC,0");
             asm("nop");
             asm("nop");
-            asm("nop");
             asm("lslf _temp,f");
             asm("bcf LATC,0");
         }
@@ -202,7 +210,6 @@ void NeoPixel3(unsigned char height, unsigned char leds) {
             asm("nop");
             asm("btfss _temp,7");
             asm("bcf LATC,0");
-            asm("nop");
             asm("nop");
             asm("nop");
             asm("lslf _temp,f");
@@ -226,7 +233,6 @@ void NeoPixel4(unsigned char height, unsigned char leds) {
             asm("bcf LATC,3");
             asm("nop");
             asm("nop");
-            asm("nop");
             asm("lslf _temp,f");
             asm("bcf LATC,3");
         }
@@ -239,7 +245,6 @@ void NeoPixel4(unsigned char height, unsigned char leds) {
             asm("bcf LATC,3");
             asm("nop");
             asm("nop");
-            asm("nop");
             asm("lslf _temp,f");
             asm("bcf LATC,3");
         }
@@ -250,7 +255,6 @@ void NeoPixel4(unsigned char height, unsigned char leds) {
             asm("nop");
             asm("btfss _temp,7");
             asm("bcf LATC,3");
-            asm("nop");
             asm("nop");
             asm("nop");
             asm("lslf _temp,f");
@@ -274,7 +278,6 @@ void NeoPixel5(unsigned char height, unsigned char leds) {
             asm("bcf LATC,4");
             asm("nop");
             asm("nop");
-            asm("nop");
             asm("lslf _temp,f");
             asm("bcf LATC,4");
         }
@@ -287,7 +290,6 @@ void NeoPixel5(unsigned char height, unsigned char leds) {
             asm("bcf LATC,4");
             asm("nop");
             asm("nop");
-            asm("nop");
             asm("lslf _temp,f");
             asm("bcf LATC,4");
         }
@@ -298,7 +300,6 @@ void NeoPixel5(unsigned char height, unsigned char leds) {
             asm("nop");
             asm("btfss _temp,7");
             asm("bcf LATC,4");
-            asm("nop");
             asm("nop");
             asm("nop");
             asm("lslf _temp,f");
@@ -322,7 +323,6 @@ void NeoPixel6(unsigned char height, unsigned char leds) {
             asm("bcf LATC,5");
             asm("nop");
             asm("nop");
-            asm("nop");
             asm("lslf _temp,f");
             asm("bcf LATC,5");
         }
@@ -335,7 +335,6 @@ void NeoPixel6(unsigned char height, unsigned char leds) {
             asm("bcf LATC,5");
             asm("nop");
             asm("nop");
-            asm("nop");
             asm("lslf _temp,f");
             asm("bcf LATC,5");
         }
@@ -346,7 +345,6 @@ void NeoPixel6(unsigned char height, unsigned char leds) {
             asm("nop");
             asm("btfss _temp,7");
             asm("bcf LATC,5");
-            asm("nop");
             asm("nop");
             asm("nop");
             asm("lslf _temp,f");
@@ -361,28 +359,53 @@ void NeoPixel6(unsigned char height, unsigned char leds) {
 ==============================================================================*/
 void NeoPixel7(unsigned char height, unsigned char leds) {
     for (leds; leds != 0; leds--) {
-        temp = 0b10101010;
-        for (i = 8; i != 0; i--) {
+        temp = (leds < height) ? green : 0;
+        //temp = 0b01010101;
+        for (i = 8; i != 0; i--) { // check total time after for loop step
             asm("bsf LATC,6");
+            asm("nop"); // extend 0high pulse or 1 high
             asm("nop"); // extend 0 pulse
             asm("btfss _temp,7");
-            asm("bcf LATC,6"); // 0 pulse ends here
-            asm("nop");
-            asm("nop");
-            asm("nop");
-            asm("nop");
-            asm("nop");
+            /* if the MSB is a 1, then it'll skip the next step
+                which means that the high pulse will be extended for the number of 
+                no-ops below */
+            /* if the MSB is a 0, then it'll do the next step
+                which means that the high pulse will be cut off, and the
+             low pulse will be for the number of no-ops below (till end of for loop  */
+            asm("bcf LATC,6"); // 0high pulse ends here
+            asm("nop"); //extending 0low or 1high
+            asm("nop"); //extending 0low or 1high
             asm("lslf _temp,f");
-            asm("bcf LATC,6"); // 1 end puls here
+            asm("bcf LATC,6"); // 1high pulse ends here
         }
+        /*
+         When temp = 0b01010101;
+         Current Timing Specs
+         0High pulse: 333 or 416 ns
+         0Low pulse: 917 or 834ns
+         Total 0 Pulse: 1250ns
+         
+         1High pulse: 666 or 750 ns
+         1Low pulse: 584 or 500ns
+         Total 1 Pulse: 1250ns
+                         
+         * Ideal Timing Specs
+         Total Time: 1.25us, tolerance of 600ns
+         Each alone is 150ns tolerance
+        
+         0High 350ns
+         0Low 800ns
+         
+         1High 700ns
+         1Low 600ns
+         */
         temp = red; //(leds < height) ? red : 0;
         for (i = 8; i != 0; i--) {
             asm("bsf LATC,6");
             asm("nop");
             asm("nop");
-            asm("btfss _temp,7");
+            asm("btfss _temp,7"); //bit test, skip if set
             asm("bcf LATC,6");
-            asm("nop");
             asm("nop");
             asm("nop");
             asm("lslf _temp,f");
@@ -395,7 +418,6 @@ void NeoPixel7(unsigned char height, unsigned char leds) {
             asm("nop");
             asm("btfss _temp,7");
             asm("bcf LATC,6");
-            asm("nop");
             asm("nop");
             asm("nop");
             asm("lslf _temp,f");
@@ -423,9 +445,8 @@ void lights(unsigned char height2, unsigned char numLeds) {
 int main(void) {
     initOsc(); // Initialize oscillator
     initPorts(); // Initialize I/O pins and peripherals
-    //	initANB();					// Optional - Initialize PORTB analogue inputs
+    //initANB();    // Optional - Initialize PORTB analogue inputs
     __delay_us(200);
-
 
     while (1) {
         max1 = 0;
@@ -453,12 +474,18 @@ int main(void) {
             }
         }
         LPFAvg = (max1 + max2 + max3 + max4) / 4;
-        lights(0b10101010, maxLEDs);
-        __delay_ms(25);
-        if (S1 == 0) // Enter the bootloader if S1 is pressed.
+        lights(LPFLookupTable[LPFAvg], maxLEDs);
+        turnServo(servoPos);
+        if (S1 == 0) {
+            servoPos = 255;
+        } else {
+            servoPos = 0;
+        }
+        //__delay_ms(25); // don't need a delay anymore, since pulsing servo
+        /*if (S1 == 0) // Enter the bootloader if S1 is pressed.
         {
             asm("movlp 0x00");
             asm("goto 0x001C");
-        }
+        }*/
     }
 }
