@@ -181,39 +181,39 @@ void NeoPixel3(unsigned char height, unsigned char leds) {
     for (leds; leds != 0; leds--) {
         temp = (leds < height) ? green : 0;
         for (i = 8; i != 0; i--) {
-            asm("bsf LATC,0");
+            asm("bsf LATC,2");
             asm("nop");
             asm("nop");
             asm("btfss _temp,7");
-            asm("bcf LATC,0");
+            asm("bcf LATC,2");
             asm("nop");
             asm("nop");
             asm("lslf _temp,f");
-            asm("bcf LATC,0");
+            asm("bcf LATC,2");
         }
         temp = red; //(leds < height) ? red : 0;
         for (i = 8; i != 0; i--) {
-            asm("bsf LATA,4");
+            asm("bsf LATC,2");
             asm("nop");
             asm("nop");
             asm("btfss _temp,7");
-            asm("bcf LATC,0");
+            asm("bcf LATC,2");
             asm("nop");
             asm("nop");
             asm("lslf _temp,f");
-            asm("bcf LATC,0");
+            asm("bcf LATC,2");
         }
         temp = blue; //(leds < height) ? blue : 0;
         for (i = 8; i != 0; i--) {
-            asm("bsf LATC,0");
+            asm("bsf LATC,2");
             asm("nop");
             asm("nop");
             asm("btfss _temp,7");
-            asm("bcf LATC,0");
+            asm("bcf LATC,2");
             asm("nop");
             asm("nop");
             asm("lslf _temp,f");
-            asm("bcf LATC,0");
+            asm("bcf LATC,2");
         }
     }
 }
@@ -481,7 +481,7 @@ int main(void) {
         } else {
             servoPos = 0;
         }
-        //__delay_ms(25); // don't need a delay anymore, since pulsing servo
+        __delay_ms(25); // don't need a delay anymore, since pulsing servo
         /*if (S1 == 0) // Enter the bootloader if S1 is pressed.
         {
             asm("movlp 0x00");

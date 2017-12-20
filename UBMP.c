@@ -30,7 +30,7 @@ void initPorts(void)
 	OPTION_REG = 0b01010111;	// Enable port pull-ups, TMR0 internal, div-256
 	
 	LATA = 0b00000000;			// Clear Port A latches before configuring PORTA
-	ANSELA = 0b00000100;		// Make all RA3 Analogue
+	ANSELA = 0b00010000;		// Make all RA3 Analogue
 	TRISA = 0b00011111;			// Set RUNLED as output, USB Datalines, beeper hole (LPF), S1 as inputs
 
 	LATB = 0b00000000;			// Clear Port B latches before configuring PORTB
