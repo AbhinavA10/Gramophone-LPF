@@ -24,14 +24,19 @@ void initOsc(void)
 
 void initPorts(void)
 {
-    
-    // 0 is output, 1 is input
-    // 0 is digital, 1 is analog
+    /*FROM PAGE 125 in http://ww1.microchip.com/downloads/en/DeviceDoc/40001639B.pdf
+     * 
+     * TRISs are data directions  - 0 is output, 1 is input
+     * PORTs are inputs
+     * LATs are outputs
+     * WPUs are weak pull-ups
+     * ANSELs are analog selects - 0 is digital, 1 is analog
+     */
 	OPTION_REG = 0b01010111;	// Enable port pull-ups, TMR0 internal, div-256
 	
 	LATA = 0b00000000;			// Clear Port A latches before configuring PORTA
-	ANSELA = 0b00010000;		// Make all RA3 Analogue
-	TRISA = 0b00011111;			// Set RUNLED as output, USB Datalines, beeper hole (LPF), S1 as inputs
+	ANSELA = 0b00010000;		// Make RA4 Analogue, rest stay digital
+	TRISA =  0b00011011;	    // Set RUNLED(RA5) as output, RA4 as input, RA0, RA1 are used for USB, RA2:3 can't be changed.
 
 	LATB = 0b00000000;			// Clear Port B latches before configuring PORTB
 	ANSELB = 0b00000000;		// Make all Port B pins digital
@@ -39,7 +44,7 @@ void initPorts(void)
 	
 	LATC = 0b00000000;			// Clear Port C latches before configuring PORTC
 	ANSELC = 0b00000000;		// Make all Port C pins digital
-	TRISC = 0b00000000;			// Set LED outputs, IR demodulator input
+	TRISC = 0b00000000;			// Set Neopixel LED and Servo outputs (headers))
 
 	// Enable interrupts, if needed.
 }

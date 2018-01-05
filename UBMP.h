@@ -54,7 +54,7 @@
 // A-D Converter input channel definitions
 
 
-#define LPFIN		0b00001100	// A-D channel 3 input
+#define LPFIN		0b00001100	// A-D channel 3 input, pg 155 in datasheet
 
 #define AN4			0b00010000	// A-D channel 4 input
 #define ADH1		0b00010000	// External H1 header analogue input (Ch4))

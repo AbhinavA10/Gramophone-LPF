@@ -476,16 +476,16 @@ int main(void) {
         LPFAvg = (max1 + max2 + max3 + max4) / 4;
         lights(LPFLookupTable[LPFAvg], maxLEDs);
         turnServo(servoPos);
-        if (S1 == 0) {
+        if (S4 == 0) {
             servoPos = 255;
         } else {
             servoPos = 0;
         }
         __delay_ms(25); // don't need a delay anymore, since pulsing servo
-        /*if (S1 == 0) // Enter the bootloader if S1 is pressed.
+        if (S1 == 0) // Enter the bootloader if S1 is pressed.
         {
             asm("movlp 0x00");
             asm("goto 0x001C");
-        }*/
+        }
     }
 }
